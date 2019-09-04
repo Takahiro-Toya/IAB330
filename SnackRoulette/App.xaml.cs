@@ -11,6 +11,8 @@ namespace SnackRoulette {
 
             //MainPage = new MainPage();
             MainPage = new NavigationPage(new LoginScreen());
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("F95F62");
+            
         }
 
         protected override void OnStart()

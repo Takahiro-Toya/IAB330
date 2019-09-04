@@ -10,6 +10,8 @@ namespace SnackRoulette.Views
         public SignUpScreen()
         {
             InitializeComponent();
+
+   
         }
     }
 }
