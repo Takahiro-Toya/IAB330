@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SnackRoulette.Views;
 
 namespace SnackRoulette {
     public partial class App : Application {
@@ -8,7 +9,8 @@ namespace SnackRoulette {
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginScreen());
         }
 
         protected override void OnStart()
