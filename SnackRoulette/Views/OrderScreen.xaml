@@ -4,8 +4,43 @@
              x:Class="SnackRoulette.Views.OrderScreen"
              Title="SnackRoulette">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="Order Screen"  />
+        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+         
+            <Button Text= "Preferred Cuisine" TextColor="White" BackgroundColor="Red"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Raidus:" HorizontalOptions="Start"/>
+                <Slider HorizontalOptions="Center"/>
+                <Label Text="km" HorizontalOptions="End"/>
+            </StackLayout>
+
+            <Button Text="Show Map" TextColor="White" BackgroundColor="Red"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Budget:"/>
+                <Slider/>
+                <Label Text="$" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Number of Meals:" />
+                <Picker Title="Select a number of meals"
+                        TitleColor="Red" >
+                    <Picker.Items>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                        <x:String>4</x:String>
+                        <x:String>5</x:String>
+                        <x:String>6</x:String>
+                        <x:String>7</x:String>
+                        <x:String>8</x:String>
+                        <x:String>9</x:String>
+                        <x:String>10</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
