@@ -10,16 +10,23 @@
 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Raidus:" HorizontalOptions="Start"/>
-                <Slider HorizontalOptions="Center"/>
-                <Label Text="km" HorizontalOptions="End"/>
+                <Slider HorizontalOptions="Center"
+                        ValueChanged="HandlebRadius_ValueChanged"
+                        x:Name="radius_slider"
+                        Maximum="10"
+                        Minimum="1"/>
+                <Label Text="km" HorizontalOptions="End" x:Name="radius_label"/>
             </StackLayout>
 
             <Button Text="Show Map" TextColor="White" BackgroundColor="Red"/>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Budget:"/>
-                <Slider/>
-                <Label Text="$" />
+                <Slider ValueChanged="HandlebBudget_ValueChanged"
+                        x:Name="budget_slider"
+                        Maximum="150"
+                        Minimum="1" />
+                <Label Text="$" x:Name="budget_label"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
