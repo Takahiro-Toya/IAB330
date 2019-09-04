@@ -11,7 +11,7 @@ namespace SnackRoulette.Views
         {
             InitializeComponent();
             budget_slider.Value = 30;
-            radius_slider.Value = 1;
+            radius_slider.Value = 2;
         }
 
         void HandlebBudget_ValueChanged(object sender, Xamarin.Forms.ValueChangedEventArgs e)
