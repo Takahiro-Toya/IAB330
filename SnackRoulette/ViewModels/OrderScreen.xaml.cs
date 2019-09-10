@@ -23,5 +23,10 @@ namespace SnackRoulette.Views
         {
             radius_label.Text = String.Format("{0:F0} km", e.NewValue);
         }
+
+        void Open_Roulette_Screen(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new RouletteScreen());
+        }
     }
 }
