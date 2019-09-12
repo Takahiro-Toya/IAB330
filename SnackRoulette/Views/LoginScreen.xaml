@@ -23,7 +23,6 @@
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
                 <Button Text="SIGN UP" Clicked="Handle_Signup" TextColor="White" BackgroundColor= "#47525E" />
                 <Button Text="LOGIN WITH FACEBOOK" TextColor="White" BackgroundColor= "#47525E" />
-                <Button Text="LOGIN WITH TWITTER" TextColor="White" BackgroundColor= "#8492A6" />
                 <Button Text="LOGIN WITH GOOGLE" TextColor="White" BackgroundColor= "#C0CCDA" />
             </StackLayout>
             
