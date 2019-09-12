@@ -50,7 +50,7 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Text= "Show Map" TextColor="White" BackgroundColor="#F95F62" Margin="10"/>          
+                <Button Grid.Column="1" Text= "Show Map" TextColor="White" BackgroundColor="#F95F62" Margin="10" Clicked="Open_Map_Screen"/>          
             </Grid>
             <Grid>
                 <Grid.RowDefinitions>

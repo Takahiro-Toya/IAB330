@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SnackRoulette.Views.LoginScreen"
+             Title = "SnackRoulette">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,5">
+                <Entry Keyboard="Email"
+                       Placeholder="Username or Email" />
+            </StackLayout>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,25">
+                <Entry Keyboard="Text"
+                       Placeholder="Enter password"
+                       IsPassword="True"
+                       VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            
+            <StackLayout HorizontalOptions="Fill">
+                <Button Text="Get Snacking" Clicked="Handle_Submit" TextColor="White" BackgroundColor= "#47525E" />
+            </StackLayout>
+            <Label Text="Or" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+                <Button Text="SIGN UP" Clicked="Handle_Signup" TextColor="White" BackgroundColor= "#47525E" />
+                <Button Text="LOGIN WITH FACEBOOK" TextColor="White" BackgroundColor= "#47525E" />
+                <Button Text="LOGIN WITH GOOGLE" TextColor="White" BackgroundColor= "#C0CCDA" />
+            </StackLayout>
+            
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -7,6 +7,10 @@ namespace SnackRoulette.Views
 {
     public partial class OrderScreen : ContentPage
     {
+        void Open_Map_Screen(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new MapPage());
+        }
         public OrderScreen()
         {
             InitializeComponent();

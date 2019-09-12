@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -10,14 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.778463" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.2.0.778463" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\OrderScreen.cs" />
@@ -30,6 +29,7 @@
     <None Remove="Views\MapScreen.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Remove="Views\LoginScreen - Copy.xaml" />
     <EmbeddedResource Remove="Views\MapScreen.xaml" />
     <EmbeddedResource Remove="Views\MyPage.xaml" />
   </ItemGroup>
