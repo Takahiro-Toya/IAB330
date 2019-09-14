@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace SnackRoulette.Views
 {
-    public partial class RouletteScreen : ContentPage
+    public partial class RouletteView : ContentPage
     {
-        public RouletteScreen()
+        public RouletteView()
         {
             InitializeComponent();
         }

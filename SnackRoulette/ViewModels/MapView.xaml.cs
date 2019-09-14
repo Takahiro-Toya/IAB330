@@ -5,10 +5,10 @@ using System.Diagnostics;
 
 namespace SnackRoulette
 {
-    public class MapPage : ContentPage
+    public class MapView : ContentPage
     {
         Map map;
-        public MapPage()
+        public MapView()
         {
             map = new Map
             {

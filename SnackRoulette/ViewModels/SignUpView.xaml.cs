@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace SnackRoulette.Views
 {
-    public partial class SignUpScreen : ContentPage
+    public partial class SignUpView : ContentPage
     {
-        public SignUpScreen()
+        public SignUpView()
         {
             InitializeComponent();
         }

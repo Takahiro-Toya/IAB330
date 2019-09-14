@@ -6,9 +6,9 @@ using SnackRoulette.Views;
 
 namespace SnackRoulette.Views
 {
-    public partial class LoginScreen : ContentPage
+    public partial class LoginView : ContentPage
     {
-        public LoginScreen()
+        public LoginView()
         {
             InitializeComponent();
    
@@ -16,14 +16,16 @@ namespace SnackRoulette.Views
 
         void Handle_Signup(object sender, System.EventArgs e)
         {
-            var SignUpScreen = new SignUpScreen();
+            var SignUpScreen = new SignUpView();
             
             Navigation.PushAsync(SignUpScreen);
         }
 
         void Handle_Submit(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new OrderScreen());
+            Navigation.PushAsync(new OrderView());
         }
+
+
     }
 }

@@ -10,7 +10,7 @@ namespace SnackRoulette {
             InitializeComponent();
 
             //MainPage = new MainPage();
-            MainPage = new NavigationPage(new LoginScreen());
+            MainPage = new NavigationPage(new LoginView());
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("F95F62");
             
         }

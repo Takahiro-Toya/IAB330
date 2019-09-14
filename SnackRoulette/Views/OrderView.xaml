@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SnackRoulette.Views.OrderScreen"
+             x:Class="SnackRoulette.Views.OrderView"
              Title="SnackRoulette">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Fill" Spacing="30">
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
@@ -15,8 +14,9 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Text= "Preferred Cuisine" TextColor="White" BackgroundColor="#F95F62" Margin="10"/>          
-            </Grid>
+                <Button Grid.Column="1" Text= "Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" BorderWidth="1" Margin="10" Clicked="Open_PreferredCuisineView"/>          
+             </Grid>
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
@@ -29,7 +29,6 @@
                 </Grid.ColumnDefinitions>
                 <Label Text="Raidus:" HorizontalTextAlignment="Center" Grid.Column="0"/>
                 <Slider x:Name="radius_slider"
-                   
                         ValueChanged="HandlebRadius_ValueChanged"
                         Maximum="10"
                         Minimum="0.5"
@@ -50,7 +49,7 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Text= "Show Map" TextColor="White" BackgroundColor="#F95F62" Margin="10" Clicked="Open_Map_Screen"/>          
+                <Button Grid.Column="1" Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" BorderWidth="1" Margin="10" Clicked="Open_MapView"/>          
             </Grid>
             <Grid>
                 <Grid.RowDefinitions>
@@ -63,14 +62,26 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Text="Budget:" HorizontalTextAlignment="Center" Grid.Column="0"/>
-                <Slider x:Name="budget_slider"
-                        ValueChanged="HandlebBudget_ValueChanged"
-                        Maximum="150"
-                        Minimum="1"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"/>
-                <Label Text="$" x:Name="budget_label" HorizontalTextAlignment="Center" Grid.Column="3"/>
+                <Label x:Name="Budget_label" Text="Inexpensive" Grid.Column="3"/>
             </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />                
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Inexpensive_Button" Text="Inexpenseive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="0" Clicked="BudgetType_Changed"/>
+                <Button x:Name="Moderate_Button" Text="Moderate" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="1" Clicked="BudgetType_Changed"/>
+                <Button x:Name="Expensive_Button" Text="Expensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="2" Clicked="BudgetType_Changed"/>
+                <Button x:Name="VeryExpensive_Button" Text="Very Expensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="3" Clicked="BudgetType_Changed"/>
+            </Grid>
+
+            
+     
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
@@ -80,8 +91,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Text="Number of Meals:" HorizontalTextAlignment="Center" Grid.Column="0"/>
-                <Picker Title="Select"
-                        TitleColor="#F95F62"
+                <Picker Title="1"
+                        TitleColor="#000000"
                         HorizontalOptions="Center"
                         Grid.Column="1">
                     <Picker.Items>
@@ -103,7 +114,7 @@
                     TextColor="White"
                     BackgroundColor="#F95F62"
                     Margin="20"
-                    Clicked="Open_Roulette_Screen"/>
+                    Clicked="Open_RouletteView"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

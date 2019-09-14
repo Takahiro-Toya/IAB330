@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace SnackRoulette.Views {
-    public partial class PreferredCuisineScreen : ContentPage {
-        public PreferredCuisineScreen()
+    public partial class PreferredCuisineView : ContentPage {
+        public PreferredCuisineView()
         {
             InitializeComponent();
         }

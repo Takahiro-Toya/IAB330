@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\OrderScreen.cs" />
@@ -24,6 +25,9 @@
     <Compile Remove="ViewModels\MapScreen.xaml.cs" />
     <Compile Remove="Views\MyPage.xaml.cs" />
     <Compile Remove="Views\RouletteScreen.cs" />
+    <Compile Remove="ViewModels\EmptyClass.cs" />
+    <Compile Remove="ViewModels\LoginViewModel.cs" />
+    <Compile Remove="Models\OrderForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\MapScreen.xml" />
@@ -32,5 +36,16 @@
     <EmbeddedResource Remove="Views\LoginScreen - Copy.xaml" />
     <EmbeddedResource Remove="Views\MapScreen.xaml" />
     <EmbeddedResource Remove="Views\MyPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MapPage.xaml.cs">
+      <DependentUpon>..\ViewModels\MapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\SignUpScreen.xaml.cs">
+      <DependentUpon>SignUpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="ViewModels\MapView.xaml.cs">
+      <DependentUpon>..\Views\MapView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
