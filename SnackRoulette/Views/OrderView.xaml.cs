@@ -6,10 +6,6 @@ using Xamarin.Forms;
 namespace SnackRoulette.Views {
     public partial class OrderView : ContentPage {
 
-        List<string> Cuisines = new List<string>();
-        double Radius = 10.0;
-
-        OrderModel.BudgetType Budget = OrderModel.BudgetType.Inexpensive;
         private Button Prev_Selected_Button = new Button();
 
         public OrderView()
