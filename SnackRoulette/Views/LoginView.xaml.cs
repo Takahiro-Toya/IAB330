@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using SnackRoulette.Views;
+using SnackRoulette.ViewModels;
 
 namespace SnackRoulette.Views
 {
@@ -11,14 +12,16 @@ namespace SnackRoulette.Views
         public LoginView()
         {
             InitializeComponent();
-   
+
+            BindingContext = new LoginViewModel();
         }
 
         void Handle_Signup(object sender, System.EventArgs e)
         {
-            var SignUpScreen = new SignUpView();
-            
-            Navigation.PushAsync(SignUpScreen);
+
+            var SignUpView = new SignUpView();
+
+            Navigation.PushAsync(SignUpView);
         }
 
         void Handle_Submit(object sender, System.EventArgs e)

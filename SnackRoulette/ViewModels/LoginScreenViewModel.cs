@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Windows.Input;
+
+using Xamarin.Forms;
+
 namespace SnackRoulette.ViewModels
 {
-    public class LoginViewModel
+    public class LoginScreenViewModel
     {
-        public LoginViewModel()
-        {
-        }
-
         public string title = "SnackRoulette";
+
+        public LoginScreenViewModel()
+        {
+
+        }
 
         public string Title
         {
