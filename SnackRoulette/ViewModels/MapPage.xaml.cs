@@ -2,30 +2,53 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
+using Plugin.Permissions.Abstractions;
+using Plugin.Geolocator;
+using MapPage;
 
 namespace SnackRoulette
 {
     public class MapPage : ContentPage
     {
-        Map map;
+        CustomMap customMap;
         public MapPage()
         {
-            map = new Map
+            customMap = new CustomMap
             {
-                //IsShowingUser = true, //Dont Activate this until GPS works (It will just crash)
+                
+                IsShowingUser = true, //Dont Activate this until GPS permissions are met (It will just crash)
                 HeightRequest = 100,
                 WidthRequest = 960,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
 
+
             //Starting region of the map, figure out how to set that to GPS
-            //map.MoveToRegion(new MapSpan(new Position(0, 0), 360, 360));
+            var position = new Position(-27.477730, 153.029065);
 
             // add the slider for adjusting search radius
             var slider = new Slider(1, 18, 1);
             slider.ValueChanged += (sender, e) => {
 
             };
+
+            var pin = new Pin
+            {
+                Type = PinType.Place,
+                Position = position,
+                Label = "QUT Gardens Point Campus",
+                Address = "2 George St, Brisbane City QLD 4000"
+            };
+
+            
+            customMap.Circle = new CustomCircle
+            {
+                Position = position,
+                Radius = 1000
+            };
+
+            customMap.Pins.Add(pin);
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1.0)));
 
 
             // create map style buttons
@@ -45,7 +68,7 @@ namespace SnackRoulette
 
             // constructing all above functions (Need to convert this into XML, I was lazy)
             var stack = new StackLayout { Spacing = 0 };
-            stack.Children.Add(map);
+            stack.Children.Add(customMap);
             stack.Children.Add(slider);
             stack.Children.Add(segments);
             Content = stack;
@@ -60,10 +83,10 @@ namespace SnackRoulette
             switch (b.Text)
             {
                 case "Street":
-                    map.MapType = MapType.Street;
+                    customMap.MapType = MapType.Street;
                     break;
                 case "Hybrid":
-                    map.MapType = MapType.Hybrid;
+                    customMap.MapType = MapType.Hybrid;
                     break;
             }
         }
