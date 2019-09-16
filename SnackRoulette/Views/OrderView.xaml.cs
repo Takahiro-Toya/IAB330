@@ -24,42 +24,42 @@ namespace SnackRoulette.Views {
             (sender as Button).TextColor = Color.White;
             Prev_Selected_Button = sender as Button;
             Budget_label.Text = (sender as Button).Text;
-            switch ((sender as Button).Text) {
-                case "Inexpensive":
-                    Budget = OrderModel.BudgetType.Inexpensive;
-                    break;
-                case "Moderate":
-                    Budget = OrderModel.BudgetType.Moderate;
-                    break;
-                case "Expensive":
-                    Budget = OrderModel.BudgetType.Expensive;
-                    break;
-                case "Very Expensive":
-                    Budget = OrderModel.BudgetType.VeryExpensive;
-                    break;
-                default:
-                    Budget = OrderModel.BudgetType.Inexpensive;
-                    break;
-            }
+            //switch ((sender as Button).Text) {
+            //    case "Inexpensive":
+            //        Budget = OrderModel.BudgetType.Inexpensive;
+            //        break;
+            //    case "Moderate":
+            //        Budget = OrderModel.BudgetType.Moderate;
+            //        break;
+            //    case "Expensive":
+            //        Budget = OrderModel.BudgetType.Expensive;
+            //        break;
+            //    case "Very Expensive":
+            //        Budget = OrderModel.BudgetType.VeryExpensive;
+            //        break;
+            //    default:
+            //        Budget = OrderModel.BudgetType.Inexpensive;
+            //        break;
+            //}
         }
 
-        void HandlebRadius_ValueChanged(object sender, Xamarin.Forms.ValueChangedEventArgs e)
-        {
-            Radius = e.NewValue;
-            radius_label.Text = String.Format("{0:F0} km", e.NewValue);
-        }
+        //void Radius_ValueChanged(object sender, Xamarin.Forms.ValueChangedEventArgs e)
+        //{
+        //    //Radius = e.NewValue;
+        //    radius_label.Text = String.Format("{0:F0} km", e.NewValue);
+        //}
 
-        void Open_PreferredCuisineView(object sender, System.EventArgs e)
+        void OpenPreferredCuisineView(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new PreferredCuisineView());
         }
 
-        void Open_MapView(object sender, System.EventArgs e)
+        void OpenMapView(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new MapView());
         }
 
-        void Open_RouletteView(object sender, System.EventArgs e)
+        void OpenRouletteView(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new RouletteView());
         }

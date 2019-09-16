@@ -5,11 +5,11 @@ using Xamarin.Forms;
 namespace SnackRoulette.ViewModels {
     public class BaseViewModel: INotifyPropertyChanged {
 
-        INavigation navigation;
+      
 
-        public BaseViewModel(INavigation navigation)
+        public BaseViewModel()
         {
-            this.navigation = navigation;
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SnackRoulette.ViewModels"
              x:Class="SnackRoulette.Views.OrderView"
              Title="SnackRoulette">
+    <ContentPage.BindingContext>
+        <vm:OrderViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Fill" Spacing="30">
             <Grid>
@@ -14,7 +18,7 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Text= "Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" BorderWidth="1" Margin="10" Clicked="Open_PreferredCuisineView"/>          
+                <Button Grid.Column="1" Text= "Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" BorderWidth="1" Margin="10" Clicked="OpenPreferredCuisineView" />          
              </Grid>
             
             <Grid>
@@ -29,12 +33,12 @@
                 </Grid.ColumnDefinitions>
                 <Label Text="Raidus:" HorizontalTextAlignment="Center" Grid.Column="0"/>
                 <Slider x:Name="radius_slider"
-                        ValueChanged="HandlebRadius_ValueChanged"
+                        Value="{Binding Radius, Mode=OneWay}"
                         Maximum="10"
                         Minimum="0.5"
                         Grid.Column="1"
                         Grid.ColumnSpan="2"/>
-                <Label Text="km"
+                <Label Text="{Binding Radius_String}"
                        HorizontalTextAlignment="Center"
                        x:Name="radius_label"
                        Grid.Column="3"/>
@@ -49,7 +53,7 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" BorderWidth="1" Margin="10" Clicked="Open_MapView"/>          
+                <Button Grid.Column="1" Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" BorderWidth="1" Margin="10" Clicked="OpenMapView"/>          
             </Grid>
             <Grid>
                 <Grid.RowDefinitions>
@@ -74,10 +78,10 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="Inexpensive_Button" Text="Inexpenseive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="0" Clicked="BudgetType_Changed"/>
-                <Button x:Name="Moderate_Button" Text="Moderate" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="1" Clicked="BudgetType_Changed"/>
-                <Button x:Name="Expensive_Button" Text="Expensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="2" Clicked="BudgetType_Changed"/>
-                <Button x:Name="VeryExpensive_Button" Text="Very Expensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="3" Clicked="BudgetType_Changed"/>
+                <Button x:Name="Inexpensive_Button" Text="1 (low)" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="0" Clicked="BudgetType_Changed"/>
+                <Button x:Name="Moderate_Button" Text="2" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="1" Clicked="BudgetType_Changed"/>
+                <Button x:Name="Expensive_Button" Text="3" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="2" Clicked="BudgetType_Changed"/>
+                <Button x:Name="VeryExpensive_Button" Text="4 (high)" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="3" Clicked="BudgetType_Changed"/>
             </Grid>
 
             
@@ -114,7 +118,7 @@
                     TextColor="White"
                     BackgroundColor="#F95F62"
                     Margin="20"
-                    Clicked="Open_RouletteView"/>
+                    Clicked="OpenRouletteView"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -7,7 +7,11 @@ namespace SnackRoulette.ViewModels {
     public class OrderViewModel: BaseViewModel {
 
         public string Cuisine;
-        public double Radius;
+        public double Radius{
+            get { return Radius; }
+            set { Radius = value;
+                Radius_String = String.Format("{0:F0} km", value); }
+            }
         public string Radius_String;
         public OrderModel.BudgetType BudgetType;
         public string BudgetType_String;
