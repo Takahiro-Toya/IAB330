@@ -4,6 +4,9 @@
              xmlns:vm="clr-namespace:SnackRoulette.ViewModels"
              x:Class="SnackRoulette.Views.OrderView"
              Title="SnackRoulette">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Account"  Priority="1" Clicked="AccountView_OnClicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <vm:OrderViewModel/>
     </ContentPage.BindingContext>

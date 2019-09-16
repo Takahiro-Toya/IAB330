@@ -7,10 +7,12 @@ namespace SnackRoulette.Views {
     public partial class OrderView : ContentPage {
 
         private Button Prev_Selected_Button = new Button();
-
-        public OrderView()
+        string user_email;
+        public OrderView(string email)
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
+            user_email = email;
             Inexpensive_Button.BackgroundColor = Color.FromHex("F95F62");
             Inexpensive_Button.TextColor = Color.White;
             Prev_Selected_Button = Inexpensive_Button;
@@ -62,6 +64,11 @@ namespace SnackRoulette.Views {
         void OpenRouletteView(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new RouletteView());
+        }
+
+        void AccountView_OnClicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new AccountView(user_email));
         }
     }
 

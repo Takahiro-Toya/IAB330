@@ -10,27 +10,33 @@
             <Label Text="Sign up" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="23" />
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,20,0,20">
                 <Entry Keyboard="Text"
-                       Placeholder="Full name"
-                       Text="{Binding FullName}"/>
+                       x:Name="username"
+                       Placeholder="Username"
+                       ReturnType="Next"/>
             </StackLayout>
              <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,20">
-                <Entry Keyboard="Text"
+                <Entry Keyboard="Email"
+                       x:Name="email"
                        Placeholder="Email"
-                       Text="{Binding FullName}"/>
+                       ReturnType="Next"/>
             </StackLayout>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,20">
                 <Entry Keyboard="Text"
+                       x:Name="password"
                        Placeholder="Password"
+                       MaxLength="12"
                        IsPassword="True"
                        VerticalOptions="CenterAndExpand"
-                       Text="{Binding PassWord}"/>
+                       ReturnType="Next"/>
             </StackLayout>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,25">
                 <Entry Keyboard="Text"
-                       Placeholder="Confirm"
+                       x:Name="confirmPassword"
+                       Placeholder="Confirm Password"
+                       MaxLength="12"
                        IsPassword="True"
                        VerticalOptions="CenterAndExpand"
-                       Text="{Binding Confirm}"/>
+                       ReturnType="Next"/>
        
             </StackLayout>
 
