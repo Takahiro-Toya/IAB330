@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SnackRoulette.Views;
+using SnackRoulette.Services;
 
 namespace SnackRoulette {
     public partial class App : Application {
@@ -11,6 +12,7 @@ namespace SnackRoulette {
 
             //MainPage = new MainPage();
             MainPage = new NavigationPage(new LoginView());
+            NavigationService.navigation = MainPage.Navigation;
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("F95F62");
             
         }

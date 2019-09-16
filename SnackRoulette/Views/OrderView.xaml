@@ -4,14 +4,12 @@
              xmlns:vm="clr-namespace:SnackRoulette.ViewModels"
              x:Class="SnackRoulette.Views.OrderView"
              Title="SnackRoulette">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Account"  Priority="1" Clicked="AccountView_OnClicked"/>
-    </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <vm:OrderViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Fill" Spacing="30">
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
@@ -21,9 +19,12 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Text= "Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" BorderWidth="1" Margin="10" Clicked="OpenPreferredCuisineView" />          
+                <Button Grid.Column="1"
+                        Text= "Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                        BorderWidth="1" Margin="10" Command="{Binding PreferredCuisineViewCommand}" />          
              </Grid>
-            
+            <Label Text="{Binding Path=Cuisine}" HorizontalTextAlignment="Center"/>
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
@@ -36,12 +37,12 @@
                 </Grid.ColumnDefinitions>
                 <Label Text="Raidus:" HorizontalTextAlignment="Center" Grid.Column="0"/>
                 <Slider x:Name="radius_slider"
-                        Value="{Binding Radius, Mode=OneWay}"
+                        Value="{Binding Radius, Mode=Default}"
                         Maximum="10"
                         Minimum="0.5"
                         Grid.Column="1"
                         Grid.ColumnSpan="2"/>
-                <Label Text="{Binding Radius_String}"
+                <Label Text="{Binding Path=Radius, StringFormat='{0:F0} km'}"
                        HorizontalTextAlignment="Center"
                        x:Name="radius_label"
                        Grid.Column="3"/>
@@ -56,7 +57,9 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" BorderWidth="1" Margin="10" Clicked="OpenMapView"/>          
+                <Button Grid.Column="1"
+                        Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                        BorderWidth="1" Margin="10" Command="{Binding MapViewCommand}"/>          
             </Grid>
             <Grid>
                 <Grid.RowDefinitions>
@@ -81,10 +84,18 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="Inexpensive_Button" Text="1 (low)" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="0" Clicked="BudgetType_Changed"/>
-                <Button x:Name="Moderate_Button" Text="2" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="1" Clicked="BudgetType_Changed"/>
-                <Button x:Name="Expensive_Button" Text="3" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="2" Clicked="BudgetType_Changed"/>
-                <Button x:Name="VeryExpensive_Button" Text="4 (high)" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62" Grid.Column="3" Clicked="BudgetType_Changed"/>
+                <Button x:Name="defaultBtn" Grid.Column="0" FontSize="Small"
+                        Text="Inexpensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                        Clicked="BudgetType_Changed"/>
+                <Button Text="Moderate" Grid.Column="1" FontSize="Small"
+                        TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                        Clicked="BudgetType_Changed"/>
+                <Button Text="Little expensive" Grid.Column="2" FontSize="Small"
+                        TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                        Clicked="BudgetType_Changed"/>
+                <Button Text="Expensive" Grid.Column="3" FontSize="Small"
+                        TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                        Clicked="BudgetType_Changed"/>
             </Grid>
 
             
@@ -121,7 +132,7 @@
                     TextColor="White"
                     BackgroundColor="#F95F62"
                     Margin="20"
-                    Clicked="OpenRouletteView"/>
+                    Command="{Binding RouletteViewCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

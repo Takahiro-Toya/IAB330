@@ -1,12 +1,10 @@
-﻿using System;
-using SQLite;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using System.Linq;
 using SnackRoulette.Models;
 using System.Collections.Generic;
+using SQLite;
 
-namespace SnackRoulette.Database
-{
+namespace SnackRoulette.Database {
     public class UserDatabaseHelper
     {
         private SQLiteConnection SQLite_Connection;
