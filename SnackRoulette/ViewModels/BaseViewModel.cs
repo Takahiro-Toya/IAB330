@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 namespace SnackRoulette.ViewModels {
     public class BaseViewModel: INotifyPropertyChanged {
 
-      
-
         public BaseViewModel()
         {
             

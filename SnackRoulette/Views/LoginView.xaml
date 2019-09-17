@@ -7,13 +7,13 @@
         <StackLayout VerticalOptions="Center">
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,5">
                 <Entry Keyboard="Email"
-                       x:Name="email"
+                       Text="{Binding Email}"
                        ReturnType="Next"
                        Placeholder="Email Address" />
             </StackLayout>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,25">
                 <Entry Keyboard="Text"
-                       x:Name="password"
+                       Text="{Binding Password}"
                        Placeholder="Password"
                        IsPassword="True"
                        ReturnType="Done"
@@ -21,11 +21,11 @@
             </StackLayout>
             
             <StackLayout HorizontalOptions="Fill">
-                <Button Text="Get Snacking" Clicked="Handle_Login" TextColor="White" BackgroundColor= "#47525E" />
+                <Button Text="Get Snacking" Command="{Binding OrderViewCommand}" TextColor="White" BackgroundColor= "#47525E" />
             </StackLayout>
             <Label Text="Or" VerticalOptions="Center" HorizontalOptions="Center"/>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
-                <Button Text="SIGN UP" Clicked="Handle_Signup" TextColor="White" BackgroundColor= "#47525E" />
+                <Button Text="SIGN UP" Command="{Binding SignUpViewCommand}" TextColor="White" BackgroundColor= "#47525E" />
                 <Button Text="LOGIN WITH FACEBOOK" TextColor="White" BackgroundColor= "#47525E" />
                 <Button Text="LOGIN WITH GOOGLE" TextColor="White" BackgroundColor= "#C0CCDA" />
             </StackLayout>
