@@ -48,6 +48,8 @@ namespace SnackRoulette.Services {
             }
         }
 
+       
+
         /*
          * Call this function in ViewModel class to push next page
          * 
@@ -61,6 +63,16 @@ namespace SnackRoulette.Services {
         public static Task PushNextView(ViewType keyForView, string constructorParameter = "")
         {
             return navigation.PushAsync(getPage(keyForView, constructorParameter));
+        }
+
+        /*
+         * The page will appear from bottom
+         *
+         * call navigation.PopModalAsync() to remove
+         */
+        public static Task ModelPushNextView(ViewType keyForView, string constructorParameter = "")
+        {
+            return navigation.PushModalAsync(getPage(keyForView, constructorParameter));
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace SnackRoulette.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel: BaseViewModel
     {
         public LoginViewModel()
         {

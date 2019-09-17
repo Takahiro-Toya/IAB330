@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SnackRoulette.Models;
+using SnackRoulette.ViewModels;
 using Xamarin.Forms;
 
 namespace SnackRoulette.Views {
@@ -12,6 +13,7 @@ namespace SnackRoulette.Views {
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
+            //(BindingContext as OrderViewModel).userEmail = email;
             user_email = email;
             defaultBtn.BackgroundColor = Color.FromHex("F95F62");
             defaultBtn.TextColor = Color.White;
@@ -26,7 +28,20 @@ namespace SnackRoulette.Views {
             Prev_Selected_Button = newBtn;
             newBtn.BackgroundColor = Color.FromHex("F95F62");
             newBtn.TextColor = Color.White;
-            Budget_label.Text = newBtn.Text;
+            //Budget_label.Text = newBtn.Text;
+            (BindingContext as OrderViewModel).BudgetType = newBtn.Text;
+        }
+
+        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
+        {
+            double value = args.NewValue;
+            (BindingContext as OrderViewModel).Radius = value;
+        }
+
+        void onPickerValueChanged(object sender, ValueChangedEventArgs args)
+        {
+            int value = (int)args.NewValue;
+            (BindingContext as OrderViewModel).NumMeals = value;
         }
 
         void AccountView_OnClicked(object sender, System.EventArgs e)
@@ -34,6 +49,4 @@ namespace SnackRoulette.Views {
             Navigation.PushAsync(new AccountView(user_email));
         }
     }
-
-
 }

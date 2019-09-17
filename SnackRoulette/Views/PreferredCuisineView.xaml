@@ -3,13 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:SnackRoulette.ViewModels"
              x:Class="SnackRoulette.Views.PreferredCuisineView">
+             
     <ContentPage.BindingContext>
         <vm:OrderViewModel/>
     </ContentPage.BindingContext>
-
     <ContentPage.Content>
-        <Grid x:Name="CuisineGrid" Margin="10">
-        </Grid>
-
+        <StackLayout Spacing="30" Margin="10">
+            <Button Text="Done" HorizontalOptions="End" Margin="20" Command="{Binding CloseCuisineViewCommand}" />
+            <Label Text="Choose your preferred cuisine!" HorizontalOptions="Center" />
+            <Grid x:Name="CuisineGrid" Margin="10" VerticalOptions="Fill">
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

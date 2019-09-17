@@ -2,6 +2,13 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+using SnackRoulette.Models;
+using SnackRoulette.Services;
+using System.Threading.Tasks;
+
 namespace SnackRoulette.ViewModels {
     public class BaseViewModel: INotifyPropertyChanged {
 
@@ -12,13 +19,17 @@ namespace SnackRoulette.ViewModels {
             
         }
 
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+            var changed = PropertyChanged;
+            if (changed == null)
+                return;
 
-        
+            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+
     }
 }

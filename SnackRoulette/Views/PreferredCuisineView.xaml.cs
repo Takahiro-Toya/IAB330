@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using SnackRoulette.ViewModels;
 using Xamarin.Forms;
 
 namespace SnackRoulette.Views {
@@ -19,13 +19,15 @@ namespace SnackRoulette.Views {
         public PreferredCuisineView()
         {
             InitializeComponent();
-            setupButton();
+            setupButtons();
         }
 
-        private void setupButton(){
+        private void setupButtons(){
             int i = 0;
+            // total five rows
             for(int r=0; r<5; ++r) 
             {
+                // 3 type per row
                 for(int c=0; c<3; ++c) 
                 {
                     Button btn = new Button();
@@ -42,16 +44,18 @@ namespace SnackRoulette.Views {
             }
         }
 
-        public void ButtonClicked(object sender, EventArgs e)
+        /*
+         * changes button color to indicate that the button is currenly selected
+         */
+        private void ButtonClicked(object sender, EventArgs e)
         {
             Button newBtn = sender as Button;
-
             prevSelectedButton.TextColor = Color.FromHex("F95F62");
             prevSelectedButton.BackgroundColor = Color.White;
             prevSelectedButton = newBtn;
             newBtn.TextColor = Color.White;
             newBtn.BackgroundColor = Color.FromHex("F95F62");
-            
+            (BindingContext as OrderViewModel).Cuisine = newBtn.Text;
         }
     }
 }

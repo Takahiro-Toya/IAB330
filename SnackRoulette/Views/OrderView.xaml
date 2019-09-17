@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="1"
-                        Text= "Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                        Text= "Choose Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
                         BorderWidth="1" Margin="10" Command="{Binding PreferredCuisineViewCommand}" />          
              </Grid>
             <Label Text="{Binding Path=Cuisine}" HorizontalTextAlignment="Center"/>
@@ -37,11 +37,11 @@
                 </Grid.ColumnDefinitions>
                 <Label Text="Raidus:" HorizontalTextAlignment="Center" Grid.Column="0"/>
                 <Slider x:Name="radius_slider"
-                        Value="{Binding Radius, Mode=Default}"
-                        Maximum="10"
-                        Minimum="0.5"
+                        Maximum="5"
+                        Minimum="0.1"
                         Grid.Column="1"
-                        Grid.ColumnSpan="2"/>
+                        Grid.ColumnSpan="2"
+                        ValueChanged="OnSliderValueChanged"/>
                 <Label Text="{Binding Path=Radius, StringFormat='{0:F0} km'}"
                        HorizontalTextAlignment="Center"
                        x:Name="radius_label"
@@ -72,9 +72,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Text="Budget:" HorizontalTextAlignment="Center" Grid.Column="0"/>
-                <Label x:Name="Budget_label" Text="Inexpensive" Grid.Column="3"/>
+                <Label x:Name="Budget_label" Text="{Binding BudgetType}" Grid.Column="3"/>
             </Grid>
-            <Grid>
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
                 </Grid.RowDefinitions>
@@ -90,7 +90,7 @@
                 <Button Text="Moderate" Grid.Column="1" FontSize="Small"
                         TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
                         Clicked="BudgetType_Changed"/>
-                <Button Text="Little expensive" Grid.Column="2" FontSize="Small"
+                <Button Text="Little expensive" Grid.Column="2" FontSize="Micro"
                         TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
                         Clicked="BudgetType_Changed"/>
                 <Button Text="Expensive" Grid.Column="3" FontSize="Small"

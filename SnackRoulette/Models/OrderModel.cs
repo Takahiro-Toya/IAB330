@@ -8,33 +8,17 @@ namespace SnackRoulette.Models {
      */
     public class OrderModel {
 
-        public enum BudgetType {
-            Inexpensive,
-            Moderate,
-            Expensive,
-            VeryExpensive
-        }
+        string Cuisine; // cuisine type
+        double Raduis; // radius requirement
+        string Budget; // budget type as "inexpensive", "moderate", "little expensive", "expensive"
+        int NumMeals; // number of meals
 
-        string Cuisine; // holds cuisine types as a list of string 
-        double Raduis; // holds radius requirement
-        BudgetType Budget; // holds budget requirement as string
-        private double radius;
-        private BudgetType budgetType;
-
-        //(because Google Place API price detail supports "inexpensive", "moderate", "expensive" and "very expensive"
-
-        public OrderModel(string cuisine, int radius, BudgetType budget)
+        public OrderModel(string cuisine, double radius, string budget, int numMeals)
         {
             this.Cuisine = cuisine;
             this.Budget = budget;
             this.Raduis = radius;
-        }
-
-        public OrderModel(string cuisine, double radius, BudgetType budgetType)
-        {
-            Cuisine = cuisine;
-            this.radius = radius;
-            this.budgetType = budgetType;
+            this.NumMeals = numMeals;
         }
     }
 }
