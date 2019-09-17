@@ -48,5 +48,6 @@ namespace SnackRoulette.Views {
         {
             Navigation.PushAsync(new AccountView(user_email));
         }
+
     }
 }
