@@ -8,7 +8,14 @@ using System.Runtime.CompilerServices;
 namespace SnackRoulette.ViewModels {
     public class OrderViewModel : BaseViewModel  {
 
-        public string Cuisine { get; set; }
+        private string cuisine = "I don't choose";
+        public string Cuisine
+        {
+            get { return cuisine; }
+            set { cuisine = value;
+                OnPropertyChanged("Cuisine");
+            }
+        }
 
         private double radius = 0.1;
         public double Radius
@@ -49,9 +56,12 @@ namespace SnackRoulette.ViewModels {
             //AccountViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.AccountView, userEmail));
         }
 
+        public void setCuisine(string cuisine) {
+               Cuisine = cuisine;
+        }
+
         public OrderModel DidConfirmOrderRequirement()
         {
-
             return new OrderModel(Cuisine, Radius, BudgetType, NumMeals);
         } 
 

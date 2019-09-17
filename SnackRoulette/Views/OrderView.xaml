@@ -9,21 +9,22 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Fill" Spacing="30">
-            
-            <Grid>
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1"
-                        Text= "Choose Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                        BorderWidth="1" Margin="10" Command="{Binding PreferredCuisineViewCommand}" />          
-             </Grid>
-            <Label Text="{Binding Path=Cuisine}" HorizontalTextAlignment="Center"/>
+                <Label Text="Preferred Cuisine:" Grid.Column="0"/>
+                <Label Text="{Binding Cuisine}" HorizontalTextAlignment="Center" Grid.Column="1" />
+            </Grid>
+            <Button Grid.Column="1" BorderWidth="1" HorizontalOptions="Center" WidthRequest="180"
+                    Text= "Choose Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                    Command="{Binding PreferredCuisineViewCommand}" />          
+                 
+
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -42,38 +43,16 @@
                         Grid.Column="1"
                         Grid.ColumnSpan="2"
                         ValueChanged="OnSliderValueChanged"/>
-                <Label Text="{Binding Path=Radius, StringFormat='{0:F0} km'}"
+                <Label Text="{Binding Path=Radius, StringFormat='{0:F1} km'}"
                        HorizontalTextAlignment="Center"
                        x:Name="radius_label"
                        Grid.Column="3"/>
             </Grid>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />                
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="1"
+                <Button Grid.Column="1" BorderWidth="1" HorizontalOptions="Center" WidthRequest="180"
                         Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                        BorderWidth="1" Margin="10" Command="{Binding MapViewCommand}"/>          
-            </Grid>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />                
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="Budget:" HorizontalTextAlignment="Center" Grid.Column="0"/>
-                <Label x:Name="Budget_label" Text="{Binding BudgetType}" Grid.Column="3"/>
-            </Grid>
+                        Command="{Binding MapViewCommand}"/>          
+         
+
             <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
@@ -84,22 +63,35 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="defaultBtn" Grid.Column="0" FontSize="Small"
+                <Label Text="Budget:" HorizontalTextAlignment="Center" Grid.Column="0"/>
+    
+            </Grid>
+
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />                
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="defaultBtn" Grid.Column="0" FontSize="Micro" BorderWidth="1"
                         Text="Inexpensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
                         Clicked="BudgetType_Changed"/>
-                <Button Text="Moderate" Grid.Column="1" FontSize="Small"
+                <Button Text="Moderate" Grid.Column="1" FontSize="Micro" BorderWidth="1"
                         TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
                         Clicked="BudgetType_Changed"/>
-                <Button Text="Little expensive" Grid.Column="2" FontSize="Micro"
+                <Button Text="Little expensive" Grid.Column="2" FontSize="Micro" BorderWidth="1"
                         TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
                         Clicked="BudgetType_Changed"/>
-                <Button Text="Expensive" Grid.Column="3" FontSize="Small"
+                <Button Text="Expensive" Grid.Column="3" FontSize="Micro" BorderWidth="1"
                         TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
                         Clicked="BudgetType_Changed"/>
             </Grid>
 
-            
-     
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />                
@@ -128,6 +120,7 @@
 
                 </Picker>
             </Grid>
+
             <Button Text="Spin The Wheel"
                     TextColor="White"
                     BackgroundColor="#F95F62"
