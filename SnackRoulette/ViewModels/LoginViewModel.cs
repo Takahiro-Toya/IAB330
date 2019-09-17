@@ -16,6 +16,7 @@ namespace SnackRoulette.ViewModels
             SignUpViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.SignUpView, ""));
             OrderViewCommand = new Command(async () => await LoginValidation());
         }
+
         UserDatabaseHelper userdatabase = new UserDatabaseHelper();
         public event PropertyChangedEventHandler PropertyChanged;
         public string title = "SnackRoulette";
@@ -72,7 +73,7 @@ namespace SnackRoulette.ViewModels
                 if (isValid)
                 {
 
-                    NavigationService.PushNextView(ViewType.OrderView, "");
+                    await NavigationService.PushNextView(ViewType.OrderView, "");
                 }
                 else
                 {

@@ -10,19 +10,19 @@
             <Label Text="Sign up" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="23" />
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,20,0,20">
                 <Entry Keyboard="Text"
-                       x:Name="username"
+                       Text="{Binding Username}"
                        Placeholder="Username"
                        ReturnType="Next"/>
             </StackLayout>
              <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,20">
                 <Entry Keyboard="Email"
-                       x:Name="email"
+                       Text="{Binding Email}"
                        Placeholder="Email"
                        ReturnType="Next"/>
             </StackLayout>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,20">
                 <Entry Keyboard="Text"
-                       x:Name="password"
+                       Text="{Binding Password}"
                        Placeholder="Password"
                        MaxLength="12"
                        IsPassword="True"
@@ -31,7 +31,7 @@
             </StackLayout>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,25">
                 <Entry Keyboard="Text"
-                       x:Name="confirmPassword"
+                       Text="{Binding ConfirmPassword}"
                        Placeholder="Confirm Password"
                        MaxLength="12"
                        IsPassword="True"
@@ -41,7 +41,7 @@
             </StackLayout>
 
             <StackLayout HorizontalOptions="Fill">
-                <Button Text="Next" Clicked="Handle_Submit" TextColor="White" BackgroundColor= "#47525E" />
+                <Button Text="Next" Command="{Binding LoginViewCommand}" TextColor="White" BackgroundColor= "#47525E" />
             </StackLayout>
             
         </StackLayout>

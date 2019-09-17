@@ -1,13 +1,34 @@
 ﻿using System;
+using Xamarin.Forms;
+using SnackRoulette.Services;
+using SnackRoulette.Database;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using SnackRoulette.Models;
+
 namespace SnackRoulette.ViewModels
 {
-    public class SignUpViewModel
+    public class SignUpViewModel : INotifyPropertyChanged
     {
         public SignUpViewModel()
         {
+            LoginViewCommand = new Command(async () => await SignUpValidation());
         }
 
-        public string title = "SnackRoulette";
+        UserDatabaseHelper userdatabase = new UserDatabaseHelper();
+        UserModel users = new UserModel();
+        public event PropertyChangedEventHandler PropertyChanged;
+        string title = "SnackRoulette";
+        string username = String.Empty;
+        string email = String.Empty;
+        string password = String.Empty;
+        string confirmPassword = String.Empty;
+
+        void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         public string Title
         {
@@ -15,28 +36,91 @@ namespace SnackRoulette.ViewModels
             set { title = value; }
         }
 
-        //public string FullName
-        //{
-        //    get { return FullName; }
-        //    set { FullName = value; }
-        //}
+        public string Username
+        {
+            get { return username; }
+            set
+            {
+                username = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //public string Email
-        //{
-        //    get { return Email; }
-        //    set { Email = value; }
-        //}
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //public string Password
-        //{
-        //    get { return Password; }
-        //    set { Password = value; }
-        //}
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                password = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //public string Confirm
-        //{
-        //    get { return Confirm; }
-        //    set { Confirm = value; }
-        //}
+        public string ConfirmPassword
+        {
+            get { return confirmPassword; }
+            set
+            {
+                confirmPassword = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Command LoginViewCommand { get; set; }
+
+        async Task SignUpValidation()
+        {
+
+            if ((string.IsNullOrWhiteSpace(username)) || (string.IsNullOrWhiteSpace(email)) || (string.IsNullOrWhiteSpace(password)) ||
+                (string.IsNullOrEmpty(username)) || (string.IsNullOrEmpty(email)) || (string.IsNullOrEmpty(password)))
+            {
+                await Application.Current.MainPage.DisplayAlert("Alert", "Please Enter Your Email, Username And Password", "OK");
+            }
+            else if (!string.Equals(password, confirmPassword))
+            {
+                await Application.Current.MainPage.DisplayAlert("Alert", "Password and Confirm Password are not the same", "OK");
+                password = string.Empty;
+                confirmPassword = string.Empty;
+                OnPropertyChanged(nameof(Password));
+                OnPropertyChanged(nameof(ConfirmPassword));
+
+            }
+            else
+            {
+                users.email = email;
+                users.userName = username;
+                users.password = password;
+
+                var val = userdatabase.AddUser(users);
+                if (val == "Successful")
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Successful", "OK");
+                    await NavigationService.PushNextView(ViewType.LoginView, "");
+                }
+                else
+                {
+                    email = string.Empty;
+                    username = string.Empty;
+                    password = string.Empty;
+                    confirmPassword = string.Empty;
+                    OnPropertyChanged(nameof(Email));
+                    OnPropertyChanged(nameof(Username));
+                    OnPropertyChanged(nameof(Password));
+                    OnPropertyChanged(nameof(ConfirmPassword));
+                    await Application.Current.MainPage.DisplayAlert("Alert", "That Email Address is Taken", "OK");
+                }
+            }
+
+        }
     }
 }
