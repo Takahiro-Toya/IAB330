@@ -5,130 +5,134 @@
              x:Class="SnackRoulette.Views.OrderView"
              Title="SnackRoulette">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Account"  Priority="1" Clicked="AccountView_OnClicked"/>
+        <ToolbarItem Text="Account"  Priority="1" Command="{Binding AccountViewCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <vm:OrderViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Fill" Spacing="30">
-            <Grid Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />                
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="Preferred Cuisine:" Grid.Column="0"/>
-                <Label Text="{Binding Cuisine}" HorizontalTextAlignment="Center" Grid.Column="1" />
-            </Grid>
-            <Button Grid.Column="1" BorderWidth="1" HorizontalOptions="Center" WidthRequest="180"
-                    Text= "Choose Preferred Cuisine" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                    Command="{Binding PreferredCuisineViewCommand}" />          
-                 
+        <AbsoluteLayout>
+            <!--The main views-->
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="StartAndExpand"
+                         HorizontalOptions="Fill"
+                         Spacing="30"
+                         AbsoluteLayout.LayoutFlags="All"
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />  
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
 
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Preferred Cuisine:" Grid.Column="0" VerticalTextAlignment="Center"/>
+                    <Button Grid.Column="1" BorderWidth="1" 
+                            Text= "{Binding Cuisine}" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                            Clicked="PreferredCuisineView" />  
+                </Grid>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />                
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="Raidus:" HorizontalTextAlignment="Center" Grid.Column="0"/>
-                <Slider x:Name="radius_slider"
-                        Maximum="5"
-                        Minimum="0.1"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        ValueChanged="OnSliderValueChanged"/>
-                <Label Text="{Binding Path=Radius, StringFormat='{0:F1} km'}"
-                       HorizontalTextAlignment="Center"
-                       x:Name="radius_label"
-                       Grid.Column="3"/>
-            </Grid>
-                <Button Grid.Column="1" BorderWidth="1" HorizontalOptions="Center" WidthRequest="180"
-                        Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                        Command="{Binding MapViewCommand}"/>          
-         
+                <BoxView BackgroundColor="Silver" HeightRequest="1" />
 
-            <Grid Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />                
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="Budget:" HorizontalTextAlignment="Center" Grid.Column="0"/>
-    
-            </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Raidus:" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Slider x:Name="radius_slider" MinimumTrackColor="#F95F62" 
+                            Maximum="5" Minimum="0.1"
+                            Grid.Row="0" Grid.Column="1"
+                            ValueChanged="OnSliderValueChanged"/>
+                    <Label Text="{Binding Path=Radius, StringFormat='{0:F1} km'}"
+                            Grid.Row="0" Grid.Column="2" VerticalOptions="Center"/>
+                    <Button Grid.Row="1" Grid.Column="1" BorderWidth="1" HorizontalOptions="Center" WidthRequest="180"
+                            Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                            Command="{Binding MapViewCommand}"/>  
+                </Grid>
+        
+                <BoxView BackgroundColor="Silver" HeightRequest="1" />
 
-            <Grid Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />                
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button x:Name="defaultBtn" Grid.Column="0" FontSize="Micro" BorderWidth="1"
-                        Text="Inexpensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                        Clicked="BudgetType_Changed"/>
-                <Button Text="Moderate" Grid.Column="1" FontSize="Micro" BorderWidth="1"
-                        TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                        Clicked="BudgetType_Changed"/>
-                <Button Text="Little expensive" Grid.Column="2" FontSize="Micro" BorderWidth="1"
-                        TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                        Clicked="BudgetType_Changed"/>
-                <Button Text="Expensive" Grid.Column="3" FontSize="Micro" BorderWidth="1"
-                        TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                        Clicked="BudgetType_Changed"/>
-            </Grid>
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" /> 
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Budget:" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Button x:Name="defaultBtn" Grid.Row="1" Grid.Column="0" FontSize="Micro" BorderWidth="1"
+                            Text="Inexpensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                            Clicked="BudgetType_Changed"/>
+                    <Button Text="Moderate" Grid.Row="1" Grid.Column="1" FontSize="Micro" BorderWidth="1"
+                            TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                            Clicked="BudgetType_Changed"/>
+                    <Button Text="Little expensive" Grid.Row="1" Grid.Column="2" FontSize="Micro" BorderWidth="1"
+                            TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                            Clicked="BudgetType_Changed"/>
+                    <Button Text="Expensive" Grid.Row="1" Grid.Column="3" FontSize="Micro" BorderWidth="1"
+                            TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                            Clicked="BudgetType_Changed"/>   
+                </Grid>
 
+                <BoxView BackgroundColor="Silver" HeightRequest="1" />
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />                
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="Number of Meals:" HorizontalTextAlignment="Center" Grid.Column="0"/>
-                <Picker Title="1"
-                        TitleColor="#000000"
-                        HorizontalOptions="Center"
-                        Grid.Column="1">
-                    <Picker.Items>
-                        <x:String>1</x:String>
-                        <x:String>2</x:String>
-                        <x:String>3</x:String>
-                        <x:String>4</x:String>
-                        <x:String>5</x:String>
-                        <x:String>6</x:String>
-                        <x:String>7</x:String>
-                        <x:String>8</x:String>
-                        <x:String>9</x:String>
-                        <x:String>10</x:String>
-                    </Picker.Items>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />                
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Number of Meals:" HorizontalTextAlignment="Center" Grid.Column="0"/>
+                    <Picker Title="1"
+                            TitleColor="#000000"
+                            HorizontalOptions="Center"
+                            Grid.Column="1">
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                            <x:String>6</x:String>
+                            <x:String>7</x:String>
+                            <x:String>8</x:String>
+                            <x:String>9</x:String>
+                            <x:String>10</x:String>
+                        </Picker.Items>
 
-                </Picker>
-            </Grid>
+                    </Picker>
+                </Grid>
 
-            <Button Text="Spin The Wheel"
-                    TextColor="White"
-                    BackgroundColor="#F95F62"
-                    Margin="20"
-                    Command="{Binding RouletteViewCommand}"/>
-        </StackLayout>
+                <Button Text="Spin The Wheel"
+                        TextColor="White"
+                        BackgroundColor="#F95F62"
+                        Margin="20"
+                        Command="{Binding RouletteViewCommand}"/>
+            </StackLayout>
+
+            <!--Preferred cuisine view that comes out from bottom-->
+            <StackLayout x:Name="flyout" Spacing="10" Margin="10"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5, 1, 1, 0.8"
+                         BackgroundColor="FloralWhite"
+                         IsVisible="false">
+                <Button Text="Done" HorizontalOptions="End" Margin="5" Clicked="PreferredCuisineView" />
+                <Grid x:Name="CuisineGrid" Margin="10" VerticalOptions="Fill">
+                </Grid>
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using SnackRoulette.Views;
+using SnackRoulette.Models;
 using System.Threading.Tasks;
 
 namespace SnackRoulette.Services {
@@ -11,7 +12,6 @@ namespace SnackRoulette.Services {
         LoginView,
         MapView,
         OrderView,
-        PreferredCuisineView,
         RouletteView,
         SignUpView
     }
@@ -25,22 +25,20 @@ namespace SnackRoulette.Services {
         /*
          * create page 
          */
-        private static Page getPage(ViewType keyForView, string constructorParameter = "")
+        private static Page getPage(ViewType keyForView, object constructorParameter)
         {
             switch (keyForView)
             {
                 case ViewType.AccountView:
-                    return new AccountView(constructorParameter);
+                    return new AccountView((string)constructorParameter);
                 case ViewType.LoginView:
                     return new LoginView();
                 case ViewType.MapView:
                     return new MapView();
                 case ViewType.OrderView:
-                    return new OrderView(constructorParameter);
-                case ViewType.PreferredCuisineView:
-                    return new PreferredCuisineView();
+                    return new OrderView((string)constructorParameter);
                 case ViewType.RouletteView:
-                    return new RouletteView();
+                    return new RouletteView(constructorParameter as OrderModel);
                 case ViewType.SignUpView:
                     return new SignUpView();
                 default:
@@ -60,7 +58,7 @@ namespace SnackRoulette.Services {
          *          Command command;
          *          command = new Command(async () => await NavigationService.PushNextView(ViewType.LoginView, ""));
          */
-        public static Task PushNextView(ViewType keyForView, string constructorParameter = "")
+        public static Task PushNextView(ViewType keyForView, object constructorParameter)
         {
             return navigation.PushAsync(getPage(keyForView, constructorParameter));
         }
@@ -70,7 +68,7 @@ namespace SnackRoulette.Services {
          *
          * call navigation.PopModalAsync() to remove
          */
-        public static Task ModelPushNextView(ViewType keyForView, string constructorParameter = "")
+        public static Task ModelPushNextView(ViewType keyForView, object constructorParameter)
         {
             return navigation.PushModalAsync(getPage(keyForView, constructorParameter));
         }

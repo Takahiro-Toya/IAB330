@@ -42,22 +42,13 @@ namespace SnackRoulette.ViewModels {
 
         public Command RouletteViewCommand { get; set; }
         public Command MapViewCommand { get; set; }
-        public Command PreferredCuisineViewCommand { get; set; }
-        public Command CloseCuisineViewCommand { get; set;}
-        //public Command AccountViewCommand { get; set; }
+        public Command AccountViewCommand { get; set; }
 
         public OrderViewModel()
         {
-            BudgetType = "Inexpensive";
-            RouletteViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.RouletteView, ""));
+            RouletteViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.RouletteView, DidConfirmOrderRequirement()));
             MapViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.MapView, ""));
-            PreferredCuisineViewCommand = new Command(async () => await NavigationService.ModelPushNextView(ViewType.PreferredCuisineView, ""));
-            CloseCuisineViewCommand = new Command(async() => await NavigationService.navigation.PopModalAsync(true));
-            //AccountViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.AccountView, userEmail));
-        }
-
-        public void setCuisine(string cuisine) {
-               Cuisine = cuisine;
+            AccountViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.AccountView, userEmail));
         }
 
         public OrderModel DidConfirmOrderRequirement()
