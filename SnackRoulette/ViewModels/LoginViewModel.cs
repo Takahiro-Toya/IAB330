@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SnackRoulette.ViewModels
 {
-    public class LoginViewModel: INotifyPropertyChanged
+    public class LoginViewModel: BaseViewModel
     {
 
         public LoginViewModel()
@@ -18,15 +18,10 @@ namespace SnackRoulette.ViewModels
         }
 
         UserDatabaseHelper userdatabase = new UserDatabaseHelper();
-        public event PropertyChangedEventHandler PropertyChanged;
+   
         public string title = "SnackRoulette";
         string password = "";
         string email = "";
-
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
 
         public string Title
         {

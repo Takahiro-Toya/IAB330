@@ -9,7 +9,7 @@ using SnackRoulette.Models;
 
 namespace SnackRoulette.ViewModels
 {
-    public class SignUpViewModel : INotifyPropertyChanged
+    public class SignUpViewModel : BaseViewModel
     {
         public SignUpViewModel()
         {
@@ -18,17 +18,12 @@ namespace SnackRoulette.ViewModels
 
         UserDatabaseHelper userdatabase = new UserDatabaseHelper();
         UserModel users = new UserModel();
-        public event PropertyChangedEventHandler PropertyChanged;
+
         string title = "SnackRoulette";
         string username = String.Empty;
         string email = String.Empty;
         string password = String.Empty;
         string confirmPassword = String.Empty;
-
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
 
         public string Title
         {
