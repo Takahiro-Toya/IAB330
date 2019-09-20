@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using SnackRoulette.Models;
+using System.Text.RegularExpressions;
 
 namespace SnackRoulette.ViewModels
 {
@@ -24,6 +25,7 @@ namespace SnackRoulette.ViewModels
         string email = String.Empty;
         string password = String.Empty;
         string confirmPassword = String.Empty;
+        string emailPattern = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
 
         public string Title
         {
@@ -80,6 +82,12 @@ namespace SnackRoulette.ViewModels
                 (string.IsNullOrEmpty(username)) || (string.IsNullOrEmpty(email)) || (string.IsNullOrEmpty(password)))
             {
                 await Application.Current.MainPage.DisplayAlert("Alert", "Please Enter Your Email, Username And Password", "OK");
+            }
+            else if (!Regex.IsMatch(email, emailPattern))
+            {
+                email = string.Empty;
+                OnPropertyChanged(nameof(Email));
+                await Application.Current.MainPage.DisplayAlert("Sign Up Failed", "Email is not valid", "OK");
             }
             else if (!string.Equals(password, confirmPassword))
             {

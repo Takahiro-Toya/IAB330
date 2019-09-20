@@ -14,7 +14,7 @@ namespace SnackRoulette.Droid.Dependancies
         }
         public SQLite.SQLiteConnection GetSQLiteConnection()
         {
-            var fileName = "userdb.db3";
+            var fileName = "users.db3";
             var documentPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             var path = Path.Combine(documentPath, fileName);
 

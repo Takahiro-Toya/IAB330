@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SnackRoulette.Views.SignUpView"
+             xmlns:local="clr-namespace:SnackRoulette.Behaviors"
              Title="{Binding Title}">
     <ContentPage.Content>
      
@@ -18,7 +19,11 @@
                 <Entry Keyboard="Email"
                        Text="{Binding Email}"
                        Placeholder="Email"
-                       ReturnType="Next"/>
+                       ReturnType="Next">
+                    <Entry.Behaviors>
+                        <local:EmailValidationBehavior />
+                    </Entry.Behaviors>
+                </Entry>
             </StackLayout>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Padding="0,0,0,20">
                 <Entry Keyboard="Text"

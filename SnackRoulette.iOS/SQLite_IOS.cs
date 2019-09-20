@@ -12,7 +12,7 @@ namespace SnackRoulette.iOS
     {
         public SQLiteConnection GetSQLiteConnection()
         {
-            var fileName = "Student.db3";
+            var fileName = "users.db3";
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var libraryPath = Path.Combine(documentsPath, "..", "Library");
             var path = Path.Combine(libraryPath, fileName);
