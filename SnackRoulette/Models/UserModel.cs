@@ -9,8 +9,9 @@ namespace SnackRoulette.Models
         public UserModel()
         {
         }
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        //[PrimaryKey, AutoIncrement]
+        //public int Id { get; set; }
+        [PrimaryKey]
         public string email { get; set; }
         public string userName { get; set; }
         [MaxLength(12)]

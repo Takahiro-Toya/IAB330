@@ -68,7 +68,7 @@ namespace SnackRoulette.ViewModels
                 if (isValid)
                 {
 
-                    await NavigationService.PushNextView(ViewType.OrderView, "");
+                    await NavigationService.PushNextView(ViewType.OrderView, email);
                 }
                 else
                 {
