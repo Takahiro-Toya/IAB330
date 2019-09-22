@@ -5,14 +5,18 @@ using SnackRoulette.Services;
 using Xamarin.Forms;
 using System.Runtime.CompilerServices;
 
-namespace SnackRoulette.ViewModels {
-    public class OrderViewModel : BaseViewModel  {
+namespace SnackRoulette.ViewModels
+{
+    public class OrderViewModel : BaseViewModel
+    {
 
         private string cuisine = "I don't choose";
         public string Cuisine
         {
             get { return cuisine; }
-            set { cuisine = value;
+            set
+            {
+                cuisine = value;
                 OnPropertyChanged("Cuisine");
             }
         }
@@ -21,7 +25,9 @@ namespace SnackRoulette.ViewModels {
         public double Radius
         {
             get { return radius; }
-            set { radius = value;
+            set
+            {
+                radius = value;
                 OnPropertyChanged("Radius");
             }
         }
@@ -30,15 +36,19 @@ namespace SnackRoulette.ViewModels {
         public string BudgetType
         {
             get { return budgetType; }
-            set { budgetType = value;
+            set
+            {
+                budgetType = value;
                 OnPropertyChanged("BudgetType");
             }
         }
 
         public int NumMeals { get; set; } = 1;
-        
+
 
         public string userEmail { get; set; }
+
+        public AccountViewModel facebookUserData { get; set; }
 
         public Command RouletteViewCommand { get; set; }
         public Command MapViewCommand { get; set; }
@@ -46,15 +56,15 @@ namespace SnackRoulette.ViewModels {
 
         public OrderViewModel()
         {
-            RouletteViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.RouletteView, DidConfirmOrderRequirement()));
-            MapViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.MapView, ""));
-            AccountViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.AccountView, userEmail));
+            RouletteViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.RouletteView, DidConfirmOrderRequirement(), facebookUserData));
+            MapViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.MapView, "", facebookUserData));
+            AccountViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.AccountView, userEmail, facebookUserData));
         }
 
         public OrderModel DidConfirmOrderRequirement()
         {
             return new OrderModel(Cuisine, Radius, BudgetType, NumMeals);
-        } 
+        }
 
     }
 }

@@ -108,7 +108,7 @@ namespace SnackRoulette.ViewModels
                 if (val == "Successful")
                 {
                     await Application.Current.MainPage.DisplayAlert("Alert", "Successful", "OK");
-                    await NavigationService.PushNextView(ViewType.LoginView, "");
+                    await NavigationService.PushNextView(ViewType.LoginView, "", "");
                 }
                 else
                 {

@@ -26,7 +26,7 @@
             <Label Text="Or" VerticalOptions="Center" HorizontalOptions="Center"/>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
                 <Button Text="SIGN UP" Command="{Binding SignUpViewCommand}" TextColor="White" BackgroundColor= "#47525E" />
-                <Button Text="LOGIN WITH FACEBOOK" TextColor="White" BackgroundColor= "#47525E" />
+                <Button Text="LOGIN WITH FACEBOOK" Command="{Binding LoginWithFacebookCommand}" TextColor="White" BackgroundColor= "#47525E" />
                 <Button Text="LOGIN WITH GOOGLE" TextColor="White" BackgroundColor= "#C0CCDA" />
             </StackLayout>
             

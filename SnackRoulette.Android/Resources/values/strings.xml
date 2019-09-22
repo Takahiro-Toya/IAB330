@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+   <string name="facebook_app_name">SnackRoulette</string>
+   <string name="facebook_app_id">1102342696627103</string>
+   <string name="fb_login_protocol_scheme">fb1102342696627103</string>
+</resources>

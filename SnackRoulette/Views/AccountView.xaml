@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SnackRoulette.Views.AccountView">
     <ContentPage.Content>
-     <StackLayout>          
+     <StackLayout HorizontalOptions="CenterAndExpand">          
     <!--<ListView x:Name="user">
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -16,6 +16,8 @@
     </ListView>-->
     <Label x:Name="oneuser" />
 
+    <Label Text="{Binding Email}" />
+    <Label Text="{Binding Username}" />
     </StackLayout>
     </ContentPage.Content>
 </ContentPage>
