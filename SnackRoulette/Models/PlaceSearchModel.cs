@@ -11,7 +11,7 @@ namespace SnackRoulette.Models {
          public List<Place> getPlacesDataForOrder(OrderModel order)
         {
             PlaceApi api = new PlaceApi();
-            Response response = api.GetPlaces(27.4698, 153.0251, PlaceType.Restaurant, true).Result;
+            Response response = api.GetPlaces(-27.469838, 153.025918, "restaurant", true).Result;
             List<Place> places = response.Places;
             return places;
         }

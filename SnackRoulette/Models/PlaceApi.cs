@@ -25,16 +25,17 @@ namespace SnackRoulette.Models {
         /// <param name="longitude">Longitude of user.</param>
         /// <param name="category">Category of stores to find.</param>
         /// <param name="open">Should find only open stores.</param>
-        async public Task<Response> GetPlaces(double latitude, double longitude, PlaceType category, bool onlyOpen)
+        async public Task<Response> GetPlaces(double latitude, double longitude, String category, bool onlyOpen)
         {
             string url = null;
             if (onlyOpen)
             {
-                url = String.Format("nearbysearch/json?key={0}&location={1},{2}&sensor=true&rankby=distance&types={3}&opennow", apiKey, latitude, longitude, category.ToString());
+                url = String.Format("nearbysearch/json?location={0},{1}&radius=1500&type={2}&key={3}&opennow", latitude, longitude, category, apiKey);
             }
             else
             {
-                url = String.Format("nearbysearch/json?key={0}&location={1},{2}&sensor=true&rankby=distance&types={3}", apiKey, latitude, longitude, category.ToString());
+                url = String.Format("nearbysearch/json?location={0},{1}&radius=1500&type={2}&key={3}", latitude, longitude, category, apiKey)  ;
+                                    
             }
             try
             {
