@@ -46,7 +46,7 @@
                         <ColumnDefinition Width="2*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="Raidus:" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="Radius:" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
                     <Slider x:Name="radius_slider" MinimumTrackColor="#F95F62" 
                             Maximum="5" Minimum="0.1"
                             Grid.Row="0" Grid.Column="1"
@@ -72,7 +72,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Label Text="Budget:" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Button x:Name="defaultBtn" Grid.Row="1" Grid.Column="0" FontSize="Micro" BorderWidth="1"
+                    <Button x:Name="budgetDefaultBtn" Grid.Row="1" Grid.Column="0" FontSize="Micro" BorderWidth="1"
                             Text="Inexpensive" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
                             Clicked="BudgetType_Changed"/>
                     <Button Text="Moderate" Grid.Row="1" Grid.Column="1" FontSize="Micro" BorderWidth="1"
@@ -96,7 +96,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="Number of Meals:" HorizontalTextAlignment="Center" Grid.Column="0"/>
+                    <Label Text="Number of guests:" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Column="0"/>
                     <Picker Title="1"
                             TitleColor="#000000"
                             HorizontalOptions="Center"
@@ -125,12 +125,14 @@
             </StackLayout>
 
             <!--Preferred cuisine view that comes out from bottom-->
-            <StackLayout x:Name="flyout" Spacing="10" Margin="10"
+            <StackLayout x:Name="preferredCuisineView" Spacing="10" Margin="10"
                          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5, 1, 1, 0.8"
                          BackgroundColor="FloralWhite"
                          IsVisible="false">
                 <Button Text="Done" HorizontalOptions="End" Margin="5" Clicked="PreferredCuisineView" />
                 <Grid x:Name="CuisineGrid" Margin="10" VerticalOptions="Fill">
+                    <!-- contents are set in the OrderView.xaml.cs because it is easier to customise in the future
+                            - add more cusine types, change number of columns or rows etc.-->
                 </Grid>
             </StackLayout>
         </AbsoluteLayout>

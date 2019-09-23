@@ -27,9 +27,9 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button Text="↙️" Grid.Row="0" Grid.Column="1"/>
+                    <Button Text="↙️" Grid.Row="0" Grid.Column="1" Clicked="startRoulette"/>
                     <Image Grid.Row="1" Grid.Column="2"/>
-                    <Button Text="↗️" Grid.Row="2" Grid.Column="3"/>
+                    <Button Text="↗️" Grid.Row="2" Grid.Column="3" Clicked="startRoulette"/>
                     <Button Text="Detail" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Clicked="DetailView"/>
                 </Grid>
                 <Label Text="Price" HorizontalTextAlignment="Center" Margin="20"/>
@@ -44,12 +44,12 @@
                          BackgroundColor="FloralWhite"
                          IsVisible="false">
                 <StackLayout>
-                    <Label x:Name="restaurantNameLabel" Text="restaurantName" FontSize="Title"/>
+                    <Label x:Name="restaurantNameLabel" Text="{Binding ResName}" FontSize="Title"/>
                     <Image x:Name="image"/>
-                    <Label x:Name="description" Text="description"/>
-                    <Label x:Name="phoneNrLabel" Text="phoneNr"/>
-                    <Label x:Name="addressLabel" Text="address"/>
-                    <Label x:Name="priceLabel" Text="price"/>
+                    <Label x:Name="description" Text="{Binding Description}"/>
+                    <Label x:Name="phoneNrLabel" Text="{Binding PhoneNr}"/>
+                    <Label x:Name="addressLabel" Text="{Binding Address}"/>
+                    <Label x:Name="priceLabel" Text="{Binding Price}"/>
                     <Button Text="Close" HorizontalOptions="End" Margin="5" Clicked="DetailView" />
                 </StackLayout>
 

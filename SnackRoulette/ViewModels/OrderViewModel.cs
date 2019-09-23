@@ -43,7 +43,7 @@ namespace SnackRoulette.ViewModels
             }
         }
 
-        public int NumMeals { get; set; } = 1;
+        public int NumGuests { get; set; } = 1;
 
 
         public string userEmail { get; set; }
@@ -56,14 +56,14 @@ namespace SnackRoulette.ViewModels
 
         public OrderViewModel()
         {
-            RouletteViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.RouletteView, DidConfirmOrderRequirement(), facebookUserData));
+            RouletteViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.RouletteView, DidConfirmOrderRequirements(), facebookUserData));
             MapViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.MapView, "", facebookUserData));
             AccountViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.AccountView, userEmail, facebookUserData));
         }
 
-        public OrderModel DidConfirmOrderRequirement()
+        public OrderModel DidConfirmOrderRequirements()
         {
-            return new OrderModel(Cuisine, Radius, BudgetType, NumMeals);
+            return new OrderModel(Cuisine, Radius, BudgetType, NumGuests);
         }
 
     }

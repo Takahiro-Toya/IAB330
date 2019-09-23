@@ -1,29 +1,91 @@
 ﻿using System;
 using SnackRoulette.Models;
+using System.Collections.Generic;
 
 namespace SnackRoulette.ViewModels {
     public class RouletteViewModel: BaseViewModel {
 
-        public OrderModel order
+        private PlaceSearchModel model = new PlaceSearchModel();
+        private List<Place> places
         {
-            get { return order; }
-            set { order = value;
-                  rouletteModel = new RouletteModel(order);
+            set
+            {
+                if (value.Count >= 1)
+                {
+                    ResName = value[0].Name;
+                } else
+                {
+                    ResName = "Not found";
+                }
+             
             }
         }
 
-        private RouletteModel rModel;
-        public RouletteModel rouletteModel
+        public OrderModel Order = null;
+
+        private string resName = "restaurantName";
+        public string ResName
         {
-            get { return rModel; }
-            set { rModel = value;
-                OnPropertyChanged("rouletteModel");
+            get { return resName; }
+            set
+            {
+                resName = value;
+                OnPropertyChanged("ResName");
             }
         }
 
-        public RouletteViewModel()
+        private string description = "description";
+        public string Description
         {
+            get { return description; }
+            set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+
+        private string address = "address";
+        public string Address
+        {
+            get { return address; }
+            set
+            {
+                address = value;
+                OnPropertyChanged("Address");
+            }
+        }
+
+        private string phoneNr = "phoneNumber";
+        public string PhoneNr
+        {
+            get { return phoneNr; }
+            set
+            {
+                phoneNr = value;
+                OnPropertyChanged("PhoneNr");
+            }
+        }
+
+        private string price = "0.0";
+        public string Price
+        {
+            get { return price; }
+            set
+            {
+                price = value;
+                OnPropertyChanged("Price");
+            }
+        }
+
+        public void search()
+        {
+            if (Order != null)
+            {
+                places = model.getPlacesDataForOrder(Order);
+            }
 
         }
+
     }
 }

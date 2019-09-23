@@ -11,9 +11,14 @@ namespace SnackRoulette.Views
     {
         public RouletteView(OrderModel order)
         {
-            // (BindingContext as RouletteViewModel).order = order;
             InitializeComponent();
+            (BindingContext as RouletteViewModel).Order = order;
             
+        }
+
+        void startRoulette(object sender, EventArgs e)
+        {
+            (BindingContext as RouletteViewModel).search();
         }
 
         async void DetailView(object sender, EventArgs e)

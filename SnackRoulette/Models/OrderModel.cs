@@ -8,17 +8,17 @@ namespace SnackRoulette.Models {
      */
     public class OrderModel {
 
-        string Cuisine; // cuisine type
-        double Raduis; // radius requirement
-        string Budget; // budget type as "inexpensive", "moderate", "little expensive", "expensive"
-        int NumMeals; // number of meals
+        public string Cuisine = "I don't choose"; // cuisine type
+        public double Raduis = 2.0; // radius requirement
+        public string Budget = "Inexpensive"; // budget type as "inexpensive", "moderate", "little expensive", "expensive"
+        public int NumGuests = 1; // number of meals
 
-        public OrderModel(string cuisine, double radius, string budget, int numMeals)
+        public OrderModel(string cuisine, double radius, string budget, int numGuests)
         {
             this.Cuisine = cuisine;
             this.Budget = budget;
             this.Raduis = radius;
-            this.NumMeals = numMeals;
+            this.NumGuests = numGuests;
         }
     }
 }
