@@ -6,14 +6,15 @@ namespace SnackRoulette.ViewModels {
     public class RouletteViewModel: BaseViewModel {
 
         private PlaceSearchModel model = new PlaceSearchModel(); 
-        private List<Place> places
+        private Place place
         {
             set
             {
-                if (value.Count >= 1)
+                if (value != null)
                 {
-                    ResName = value[0].Name;
+                    ResName = value.Name;
                     Description = Order.Cuisine;
+
                 } else
                 {
                     ResName = "Not found";
@@ -86,7 +87,7 @@ namespace SnackRoulette.ViewModels {
         {
             if (Order != null)
             {
-                places = model.getPlacesDataForOrder(Order);
+                place = model.getRandomPlace(Order);
             }
 
         }

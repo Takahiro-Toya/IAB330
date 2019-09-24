@@ -63,7 +63,26 @@ namespace SnackRoulette.ViewModels
 
         public OrderModel DidConfirmOrderRequirements()
         {
-            return new OrderModel(Cuisine, Radius, BudgetType, NumGuests);
+            int budget;
+            switch (BudgetType)
+            {
+                case "inexpensive":
+                    budget = 1;
+                    break;
+                case "moderate":
+                    budget = 2;
+                    break;
+                case "little expensive":
+                    budget = 3;
+                    break;
+                case "expensive":
+                    budget = 4;
+                    break;
+                default:
+                    budget = 1;
+                    break;
+            }
+            return new OrderModel(Cuisine, Radius, budget, NumGuests);
         }
 
     }
