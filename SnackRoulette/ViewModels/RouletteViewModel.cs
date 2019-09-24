@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace SnackRoulette.ViewModels {
     public class RouletteViewModel: BaseViewModel {
 
-        private PlaceSearchModel model = new PlaceSearchModel();
+        private PlaceSearchModel model = new PlaceSearchModel(); 
         private List<Place> places
         {
             set
@@ -13,6 +13,7 @@ namespace SnackRoulette.ViewModels {
                 if (value.Count >= 1)
                 {
                     ResName = value[0].Name;
+                    Description = Order.Cuisine;
                 } else
                 {
                     ResName = "Not found";
@@ -78,6 +79,9 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
+        /*
+         * Start searching restaurants with given order requirement
+         */
         public void search()
         {
             if (Order != null)

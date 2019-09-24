@@ -17,6 +17,35 @@ namespace SnackRoulette.Models {
             Client.BaseAddress = new Uri("https://maps.googleapis.com/maps/api/place/");
         }
 
+        async public Task<Response> GetPlaces(double latitude, double longitude, double radius, String type, String keyword, int priceLevel, bool onlyOpen)
+        {
+            string url = null;
+            if (onlyOpen)
+            {
+                url = String.Format("nearbysearch/json?location={0},{1}&radius={2}&type={3}&keyword={4}&price_level={5}&key={6}&opennow", latitude, longitude, radius, type, keyword, priceLevel, apiKey);
+            }
+            else
+            {
+                url = String.Format("nearbysearch/json?location={0},{1}&radius={2}&type={3}&keyword={4}&price_level={5}&key={6}", latitude, longitude, radius, type, keyword, priceLevel, apiKey);
+            }
+            try
+            {
+                var resp = await Client.GetAsync(url).ConfigureAwait(false);
+                if (resp.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject(await resp.Content.ReadAsStringAsync(), typeof(Response)) as Response;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// Gets stores of a certain category near the specified co-ordinates. Can be show only
         /// open stores or all stores.
