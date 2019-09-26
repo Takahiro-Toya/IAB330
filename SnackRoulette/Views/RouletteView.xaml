@@ -40,12 +40,12 @@
 
             <!-- Detail view layout -->
             <StackLayout x:Name="detailView" Spacing="10" Margin="10"
-                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.8, 0.8"
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.6, 0.6"
                          BackgroundColor="FloralWhite"
                          IsVisible="false">
                 <StackLayout>
                     <Label x:Name="restaurantNameLabel" Text="{Binding ResName}" FontSize="Title"/>
-                    <Image x:Name="image"/>
+                    <Image x:Name="image" />
                     <Label x:Name="description" Text="{Binding Description}"/>
                     <Label x:Name="phoneNrLabel" Text="{Binding PhoneNr}"/>
                     <Label x:Name="addressLabel" Text="{Binding Address}"/>

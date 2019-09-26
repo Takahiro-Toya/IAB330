@@ -66,23 +66,26 @@ namespace SnackRoulette.ViewModels
             int budget;
             switch (BudgetType)
             {
-                case "inexpensive":
+                case "Inexpensive":
                     budget = 1;
                     break;
-                case "moderate":
+                case "Moderate":
                     budget = 2;
                     break;
-                case "little expensive":
+                case "Little expensive":
                     budget = 3;
                     break;
-                case "expensive":
+                case "Expensive":
                     budget = 4;
                     break;
                 default:
                     budget = 1;
                     break;
             }
-            return new OrderModel(Cuisine, Radius, budget, NumGuests);
+            string cuisineC;
+            if (Cuisine == "I don't choose") { cuisineC = ""; }
+            else { cuisineC = Cuisine; }
+            return new OrderModel(cuisineC, Radius, budget, NumGuests);
         }
 
     }

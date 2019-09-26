@@ -12,18 +12,47 @@ namespace SnackRoulette.ViewModels {
             {
                 if (value != null)
                 {
-                    ResName = value.Name;
+                    Detail detail = PlaceApi.GetDetails(value.PlaceId).Result;
+                    ResName = detail.Name;
                     Description = Order.Cuisine;
-
+                    PhoneNr = detail.Phone;
+                    Address = detail.Address;
+                    Price = getPriceType(Order.Budget);
                 } else
                 {
-                    ResName = "Not found";
+                    ResName = "Restaurant Not found";
+                    Description = "";
+                    Address = "";
+                    PhoneNr = "";
+                    Price = "";
                 }
              
             }
         }
 
-        public OrderModel Order = null;
+        /*
+         * Converts price level (0 ~ 4) to meaningful name
+         */
+        private string getPriceType(int price)
+        {
+            switch (price)
+            {
+                case 0:
+                    return "Free";
+                case 1:
+                    return "inexpensive";
+                case 2:
+                    return "moderate";
+                case 3:
+                    return "little expensive";
+                case 4:
+                    return "expensive";
+                default:
+                    return getPriceType(Order.Budget); // this is so bad
+            }
+        }
+
+        public OrderModel Order = null; // set before start searching restaurant
 
         private string resName = "restaurantName";
         public string ResName
@@ -69,7 +98,7 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
-        private string price = "0.0";
+        private string price = "inexpensive";
         public string Price
         {
             get { return price; }
@@ -79,6 +108,8 @@ namespace SnackRoulette.ViewModels {
                 OnPropertyChanged("Price");
             }
         }
+
+
 
         /*
          * Start searching restaurants with given order requirement

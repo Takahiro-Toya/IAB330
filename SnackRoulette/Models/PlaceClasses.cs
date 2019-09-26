@@ -32,9 +32,9 @@ namespace SnackRoulette.Models {
         [JsonProperty("price_level")]
         public int Price = -5;                  // Price Rating
         [JsonProperty("formatted_address")]
-        public string Address { get; set; }     // Address
+        public string Address { get; set; } = "not provided";    // Address
         [JsonProperty("formatted_phone_number")]
-        public string Phone { get; set; }       // Phone Number
+        public string Phone { get; set; } = "not provided";      // Phone Number
         [JsonProperty("opening_hours")]
         public Opening Open { get; set; }       // Business Hours
     }

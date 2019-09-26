@@ -22,11 +22,11 @@ namespace SnackRoulette.Models {
             string url = null;
             if (onlyOpen)
             {
-                url = String.Format("nearbysearch/json?location={0},{1}&radius={2}&type={3}&keyword={4}&price_level={5}&key={6}&opennow", latitude, longitude, radius, type, keyword, priceLevel, apiKey);
+                url = String.Format("nearbysearch/json?location={0},{1}&radius={2}&type={3}&keyword={4}&price_level={5}&key={6}&opennow", latitude, longitude, radius, type, keyword, priceLevel.ToString(), apiKey);
             }
             else
             {
-                url = String.Format("nearbysearch/json?location={0},{1}&radius={2}&type={3}&keyword={4}&price_level={5}&key={6}", latitude, longitude, radius, type, keyword, priceLevel, apiKey);
+                url = String.Format("nearbysearch/json?location={0},{1}&radius={2}&type={3}&keyword={4}&price_level={5}&key={6}", latitude, longitude, radius, type, keyword, priceLevel.ToString(), apiKey);
             }
             try
             {
@@ -92,7 +92,7 @@ namespace SnackRoulette.Models {
         {
             try
             {
-                var resp = await Client.GetAsync(String.Format("details/json?key={0}&placeid={1}&sensor=true", apiKey, placeId));
+                var resp = await Client.GetAsync(String.Format("details/json?key={0}&placeid={1}&sensor=true", apiKey, placeId)).ConfigureAwait(false);
                 if (resp.IsSuccessStatusCode)
                 {
                     return (JsonConvert.DeserializeObject(await resp.Content.ReadAsStringAsync(), typeof(Response)) as Response).Detail;
