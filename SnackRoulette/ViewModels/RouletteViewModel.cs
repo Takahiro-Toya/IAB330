@@ -9,7 +9,7 @@ namespace SnackRoulette.ViewModels {
     public class RouletteViewModel: BaseViewModel {
 
         public ICommand StartRouletteCommand { get; private set; }
-        private RouletteModel model = new RouletteModel();
+        private PlaceSearchModel model = new PlaceSearchModel();
         public RouletteViewModel()
         {
             StartRouletteCommand= new Command(async () => {

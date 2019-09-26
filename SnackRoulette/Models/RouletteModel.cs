@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace SnackRoulette.Models {
-    public class RouletteModel {
+    public class PlaceSearchModel {
 
         private Random random = new Random();
 
