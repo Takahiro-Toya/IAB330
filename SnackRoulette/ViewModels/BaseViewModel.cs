@@ -11,7 +11,10 @@ using System.Threading.Tasks;
 
 namespace SnackRoulette.ViewModels {
     public class BaseViewModel: INotifyPropertyChanged {
-
+        private bool isBusy;
+        public bool IsBusy { get { return isBusy; } set { isBusy = value;
+                OnPropertyChanged();
+            } }
         public BaseViewModel()
         {
             

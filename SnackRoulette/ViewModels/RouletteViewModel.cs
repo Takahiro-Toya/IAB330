@@ -1,11 +1,21 @@
 ﻿using System;
 using SnackRoulette.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace SnackRoulette.ViewModels {
     public class RouletteViewModel: BaseViewModel {
 
-        private PlaceSearchModel model = new PlaceSearchModel(); 
+        public ICommand StartRouletteCommand { get; private set; }
+        private PlaceSearchModel model = new PlaceSearchModel();
+        public RouletteViewModel()
+        {
+            StartRouletteCommand= new Command(async () => {
+                await search();
+            });
+        }
         private Place place
         {
             set
@@ -114,13 +124,14 @@ namespace SnackRoulette.ViewModels {
         /*
          * Start searching restaurants with given order requirement
          */
-        public void search()
+        public async Task search()
         {
+            IsBusy = true;
             if (Order != null)
             {
-                place = model.getRandomPlace(Order);
+                place = await model.getRandomPlace(Order);
             }
-
+            IsBusy = false;
         }
 
     }

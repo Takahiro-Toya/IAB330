@@ -27,9 +27,9 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button Text="↙️" Grid.Row="0" Grid.Column="1" Clicked="startRoulette"/>
+                    <Button Text="↙️" Grid.Row="0" Grid.Column="1" Command="{Binding StartRouletteCommand}"/>
                     <Image Grid.Row="1" Grid.Column="2"/>
-                    <Button Text="↗️" Grid.Row="2" Grid.Column="3" Clicked="startRoulette"/>
+                    <Button Text="↗️" Grid.Row="2" Grid.Column="3" Command="{Binding StartRouletteCommand}"/>
                     <Button Text="Detail" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Clicked="DetailView"/>
                 </Grid>
                 <Label Text="Price" HorizontalTextAlignment="Center" Margin="20"/>
@@ -54,6 +54,8 @@
                 </StackLayout>
 
             </StackLayout>
+             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0"/>
         </AbsoluteLayout>
+       
     </ContentPage.Content>
 </ContentPage>

@@ -16,10 +16,7 @@ namespace SnackRoulette.Views
             
         }
 
-        void startRoulette(object sender, EventArgs e)
-        {
-            (BindingContext as RouletteViewModel).search();
-        }
+        
 
         async void DetailView(object sender, EventArgs e)
         {
