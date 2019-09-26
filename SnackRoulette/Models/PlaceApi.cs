@@ -4,12 +4,10 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace SnackRoulette.Models
-{
-    public class PlaceApi
-    {
+namespace SnackRoulette.Models {
+    public class PlaceApi {
 
-        private static HttpClient Client { get; set; }
+        private static HttpClient Client {get; set;}
         private static string apiKey = "AIzaSyDfjL46PjmrBTFtphRVTVIQ-E59m4tHBlk";
 
 
@@ -65,8 +63,8 @@ namespace SnackRoulette.Models
             }
             else
             {
-                url = String.Format("nearbysearch/json?location={0},{1}&radius=1500&type={2}&key={3}", latitude, longitude, category, apiKey);
-
+                url = String.Format("nearbysearch/json?location={0},{1}&radius=1500&type={2}&key={3}", latitude, longitude, category, apiKey)  ;
+                                    
             }
             try
             {
@@ -98,25 +96,6 @@ namespace SnackRoulette.Models
                 if (resp.IsSuccessStatusCode)
                 {
                     return (JsonConvert.DeserializeObject(await resp.Content.ReadAsStringAsync(), typeof(Response)) as Response).Detail;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-        async public static Task<Location> GetLocat(string placeId)
-        {
-            try
-            {
-                var resp = await Client.GetAsync(String.Format("geometry/json?key={0}&placeid={1}&sensor=true", apiKey, placeId)).ConfigureAwait(false);
-                if (resp.IsSuccessStatusCode)
-                {
-                    return (JsonConvert.DeserializeObject(await resp.Content.ReadAsStringAsync(), typeof(Response)) as Response).Location;
                 }
                 else
                 {

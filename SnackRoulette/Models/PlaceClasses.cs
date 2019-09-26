@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace SnackRoulette.Models
-{
-    public class Place
-    {
+namespace SnackRoulette.Models {
+    public class Place {
         [JsonProperty("name")]
         public string Name { get; set; }        // Name
         [JsonProperty("vicinity")]
@@ -26,8 +24,7 @@ namespace SnackRoulette.Models
         }
     }
 
-    public class Detail
-    {
+    public class Detail {
         [JsonProperty("name")]
         public string Name { get; set; }        // Name
         [JsonProperty("rating")]
@@ -42,24 +39,21 @@ namespace SnackRoulette.Models
         public Opening Open { get; set; }       // Business Hours
     }
 
-    public class Opening
-    {
+    public class Opening {
         [JsonProperty("open_now")]
         public bool Now = false;                // Currently open
         [JsonProperty("periods")]
         public Period[] Periods { get; set; }   // Opened time frames
     }
 
-    public class Period
-    {
+    public class Period {
         [JsonProperty("open")]
         public Range Open { get; set; }         // Opening time
         [JsonProperty("close")]
         public Range Close { get; set; }        // Closing time
     }
 
-    public class Range
-    {
+    public class Range {
         [JsonProperty("day")]
         public int Day { get; set; }
         [JsonProperty("time")]
@@ -72,27 +66,21 @@ namespace SnackRoulette.Models
         }
     }
 
-    public class Geometry
-    {
+    public class Geometry {
         [JsonProperty("location")]
         public Location Location { get; set; }
     }
 
-    public class Location
-    {
+    public class Location {
         [JsonProperty("lat")]
         public double Latitude { get; set; }
         [JsonProperty("lng")]
         public double Longitude { get; set; }
     }
 
-
-    public class Response
-    {
+    public class Response {
         [JsonProperty("result")]
         public Detail Detail { get; set; }
-        [JsonProperty("results")]
-        public Location Location { get; set; }
         [JsonProperty("results")]
         public List<Place> Places { get; set; }
         [JsonProperty("next_page_token")]
