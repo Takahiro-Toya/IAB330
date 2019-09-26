@@ -10,7 +10,7 @@ namespace SnackRoulette.Models {
         /*
          * Get list of places from google place api
          */
-        private List<Place> getPlacesForOrder(OrderModel order)
+        public List<Place> getPlacesForOrder(OrderModel order)
         {
             PlaceApi api = new PlaceApi();
             Response response = api.GetPlaces(-27.4738117, 153.0249561, order.Raduis * 1000, "restaurant", order.Cuisine, order.Budget, true).Result;
@@ -38,6 +38,6 @@ namespace SnackRoulette.Models {
 
 
 
-        
+
     }
 }

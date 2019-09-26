@@ -57,7 +57,7 @@ namespace SnackRoulette.ViewModels
         public OrderViewModel()
         {
             RouletteViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.RouletteView, DidConfirmOrderRequirements(), facebookUserData));
-            MapViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.MapView, "", facebookUserData));
+            MapViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.MapView,DidConfirmOrderRequirements(), facebookUserData));
             AccountViewCommand = new Command(async () => await NavigationService.PushNextView(ViewType.AccountView, userEmail, facebookUserData));
         }
 

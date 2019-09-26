@@ -107,7 +107,26 @@ namespace SnackRoulette.Models {
                 return null;
             }
         }
+        async public static Task<Location> GetLocat(string placeId)
+        {
+            try
+            {
+                var resp = await Client.GetAsync(String.Format("geometry/json?key={0}&placeid={1}&sensor=true", apiKey, placeId)).ConfigureAwait(false);
+                if (resp.IsSuccessStatusCode)
+                {
+                    return (JsonConvert.DeserializeObject(await resp.Content.ReadAsStringAsync(), typeof(Response)) as Response).Location;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
-    } // end of class
+        } // end of class
 } // end of name space
 

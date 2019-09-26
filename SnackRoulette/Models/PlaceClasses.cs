@@ -78,9 +78,12 @@ namespace SnackRoulette.Models {
         public double Longitude { get; set; }
     }
 
+
     public class Response {
         [JsonProperty("result")]
         public Detail Detail { get; set; }
+        [JsonProperty("results")]
+        public Location Location { get; set; }
         [JsonProperty("results")]
         public List<Place> Places { get; set; }
         [JsonProperty("next_page_token")]
