@@ -26,7 +26,7 @@ namespace SnackRoulette.Models {
 
     public class Detail {
         [JsonProperty("name")]
-        public string Name { get; set; }        // Name
+        public string Name { get; set; }      // Name
         [JsonProperty("rating")]
         public decimal Rating = -5;             // Rating
         [JsonProperty("price_level")]

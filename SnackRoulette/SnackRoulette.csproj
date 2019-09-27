@@ -24,6 +24,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Database\" />
     <Folder Include="Behaviors\" />
+    <Folder Include="GooglePlaceAPI\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\OrderScreen.cs" />

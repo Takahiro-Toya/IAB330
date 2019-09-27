@@ -9,6 +9,8 @@ namespace SnackRoulette.ViewModels {
     public class RouletteViewModel: BaseViewModel {
 
         public ICommand StartRouletteCommand { get; private set; }
+        public ICommand DetailViewCloseCommand { get; private set; }
+
         private RouletteModel model = new RouletteModel();
         public RouletteViewModel()
         {
@@ -16,29 +18,30 @@ namespace SnackRoulette.ViewModels {
                 await search();
             });
         }
-        private Place place
+
+        private Detail placeDetail
         {
             set
             {
                 if (value != null)
                 {
-                    Detail detail = PlaceApi.GetDetails(value.PlaceId).Result;
-                    ResName = detail.Name;
+                    ResName = value.Name;
                     Description = Order.Cuisine;
-                    PhoneNr = detail.Phone;
-                    Address = detail.Address;
+                    PhoneNr = value.Phone;
+                    Address = value.Address;
                     Price = getPriceType(Order.Budget);
                 } else
                 {
-                    ResName = "Restaurant Not found";
+                    ResName = "Restaurant Not Found";
                     Description = "";
-                    Address = "";
                     PhoneNr = "";
+                    Address = "";
                     Price = "";
                 }
-             
             }
         }
+
+
 
         /*
          * Converts price level (0 ~ 4) to meaningful name
@@ -119,8 +122,6 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
-
-
         /*
          * Start searching restaurants with given order requirement
          */
@@ -129,7 +130,7 @@ namespace SnackRoulette.ViewModels {
             IsBusy = true;
             if (Order != null)
             {
-                place = await model.getRandomPlace(Order);
+                placeDetail = await model.getRandomPlaceDetail(Order);
             }
             IsBusy = false;
         }

@@ -36,6 +36,19 @@ namespace SnackRoulette.Models {
             
         }
 
+        public async Task<Detail> getRandomPlaceDetail(OrderModel order)
+        {
+            List<Place> places = await getPlacesForOrder(order);
+            if (places.Count != 0)
+            {
+                int randomNum = random.Next(0, places.Count - 1);
+                return await places[randomNum].GetDetails();
+            } else
+            {
+                return null;
+            }
+        }
+
 
 
         

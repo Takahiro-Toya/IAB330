@@ -8,54 +8,28 @@
         <vm:RouletteViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <AbsoluteLayout>
 
             <!-- Main layout -->
             <StackLayout>
+                <Label Text=""/>
                 <Label Text="Spin The Wheel to Choose Your Food" HorizontalTextAlignment="Center" Margin="10"/>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="3*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button Text="↙️" Grid.Row="0" Grid.Column="1" Command="{Binding StartRouletteCommand}"/>
-                    <Image Grid.Row="1" Grid.Column="2"/>
-                    <Button Text="↗️" Grid.Row="2" Grid.Column="3" Command="{Binding StartRouletteCommand}"/>
-                    <Button Text="Detail" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Clicked="DetailView"/>
-                </Grid>
-                <Label Text="Price" HorizontalTextAlignment="Center" Margin="20"/>
-                <Button Text= "Next" TextColor="White" BackgroundColor="#F95F62" Margin="30"/>          
- 
+                <Label Text=" "/>
+                <Label x:Name="restaurantNameLabel" Text="{Binding ResName}" FontSize="Title" HorizontalTextAlignment="Center" TextColor="#F95F62"/>
+                <Label Text="Category" Margin="10" />
+                <Label x:Name="description" Text="{Binding Description}" HorizontalTextAlignment="Center" FontSize="Large"/>
+                <Label Text="Price level" Margin="10" />
+                <Label x:Name="priceLabel" Text="{Binding Price}" HorizontalTextAlignment="Center" FontSize="Large"/>
+                <Label Text="Phone number" Margin="10" />
+                <Label x:Name="phoneNrLabel" Text="{Binding PhoneNr}" HorizontalTextAlignment="Center" FontSize="Large"/>
+                <Label Text="Address" Margin="10" />
+                <Label x:Name="addressLabel" Text="{Binding Address}" HorizontalTextAlignment="Center" FontSize="Large"/>
+
+                <Button Text= "START!" TextColor="White" BackgroundColor="#F95F62"
+                        Margin="50" CornerRadius="20"
+                        Command="{Binding StartRouletteCommand}"/>          
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center"/>
 
             </StackLayout>
-
-            <!-- Detail view layout -->
-            <StackLayout x:Name="detailView" Spacing="10" Margin="10"
-                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.6, 0.6"
-                         BackgroundColor="FloralWhite"
-                         IsVisible="false">
-                <StackLayout>
-                    <Label x:Name="restaurantNameLabel" Text="{Binding ResName}" FontSize="Title"/>
-                    <Image x:Name="image" />
-                    <Label x:Name="description" Text="{Binding Description}"/>
-                    <Label x:Name="phoneNrLabel" Text="{Binding PhoneNr}"/>
-                    <Label x:Name="addressLabel" Text="{Binding Address}"/>
-                    <Label x:Name="priceLabel" Text="{Binding Price}"/>
-                    <Button Text="Close" HorizontalOptions="End" Margin="5" Clicked="DetailView" />
-                </StackLayout>
-
-            </StackLayout>
-             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.0,0.0,1.0,1.0"/>
-        </AbsoluteLayout>
        
     </ContentPage.Content>
 </ContentPage>
