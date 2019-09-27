@@ -37,6 +37,8 @@ namespace SnackRoulette.Models {
         public string Phone { get; set; } = "not provided";      // Phone Number
         [JsonProperty("opening_hours")]
         public Opening Open { get; set; }       // Business Hours
+        [JsonProperty("geometry")]
+        public Geometry Geo { get; set; }
     }
 
     public class Opening {
