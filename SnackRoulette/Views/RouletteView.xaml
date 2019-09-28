@@ -1,36 +1,70 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:SnackRoulette.Services;assembly=SnackRoulette"
              xmlns:vm="clr-namespace:SnackRoulette.ViewModels"
              x:Class="SnackRoulette.Views.RouletteView">
 
     <ContentPage.BindingContext>
         <vm:RouletteViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <cv:ImageSourceConverter x:Key="ImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
+
 
             <!-- Main layout -->
             <StackLayout>
                 <Label Text=""/>
-                <Label Text="Spin The Wheel to Choose Your Food" HorizontalTextAlignment="Center" Margin="5"/>
+                <Label Text="Tap 'START'!" HorizontalTextAlignment="Center" Margin="5" FontAttributes="Bold"/>
                 <Label Text=" "/>
-                <Label x:Name="restaurantNameLabel" Text="{Binding ResName}" FontSize="Title" HorizontalTextAlignment="Center" TextColor="#F95F62"/>
-                <Label Text="Category" Margin="5" />
-                <Label x:Name="description" Text="{Binding Description}" HorizontalTextAlignment="Center" FontSize="Medium"/>
-                <Label Text="Price level" Margin="5" />
-                <Label x:Name="priceLabel" Text="{Binding Price}" HorizontalTextAlignment="Center" FontSize="Medium"/>
-                <Label Text="Phone number" Margin="5" />
-                <Label x:Name="phoneNrLabel" Text="{Binding PhoneNr}" HorizontalTextAlignment="Center" FontSize="Medium"/>
-                <Label Text="Address" Margin="5" />
-                <Label x:Name="addressLabel" Text="{Binding Address}" HorizontalTextAlignment="Center" FontSize="Medium"/>
-                <Label Text="Coords" Margin="5" />
-                <Label x:Name="coordsLabel" Text="{Binding Coordinate}" HorizontalTextAlignment="Center" FontSize="Medium"/>
 
-            <Button Text= "START!" TextColor="White" BackgroundColor="#F95F62"
-                        Margin="30" CornerRadius="20"
-                        Command="{Binding StartRouletteCommand}"/>          
+                <Label Text="{Binding ResName}" FontSize="Title" FontAttributes="Italic" HorizontalTextAlignment="Center" TextColor="#F95F62"/>
+
+                <BoxView BackgroundColor="Silver" HeightRequest="1" />
+
+                <StackLayout Orientation="Horizontal">
+                <Label Text="Category:" Margin="5"/>
+                <Label Text="{Binding Description}" HorizontalOptions="End" FontSize="Large" Margin="5"/>
+                </StackLayout>
+
+
+                <BoxView BackgroundColor="Silver" HeightRequest="1" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Price level:" Margin="5"/>
+                    <Label Text="{Binding Price}" HorizontalOptions="End" FontSize="Large" Margin="5"/>
+                </StackLayout>
+
+                <BoxView BackgroundColor="Silver" HeightRequest="1" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Phone number:" Margin="5"/>
+                    <Label Text="{Binding PhoneNr}" HorizontalOptions="End" FontSize="Large" Margin="5"/>
+                </StackLayout>
+
+                <BoxView BackgroundColor="Silver" HeightRequest="1" />
+
+                <Label Text="Address" Margin="5" />
+                <Label Text="{Binding Address}" HorizontalOptions="End" FontSize="Large"/>
+
+                <BoxView BackgroundColor="Silver" HeightRequest="1" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Coords" Margin="5" />
+                    <Label x:Name="coordsLabel" Text="{Binding Coordinate}" HorizontalOptions="End" Margin="5" FontSize="Large"/>
+                </StackLayout>
+
                 <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center"/>
 
+                <Button Text= "START!" TextColor="White" BackgroundColor="#F95F62"
+                        Margin="30" CornerRadius="20"
+                        Command="{Binding StartRouletteCommand}"/>
+                <!--<Image Source="{Binding FoodImage, Converter={StaticResource ImageSourceConverter}}" HorizontalOptions="Center"/>-->
+                <Image Source="{Binding FoodImage}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             </StackLayout>
        
     </ContentPage.Content>

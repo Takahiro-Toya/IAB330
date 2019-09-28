@@ -137,4 +137,26 @@
       <Name>SnackRoulette</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Thai.png" />
+    <BundleResource Include="Resources\Sushi.png" />
+    <BundleResource Include="Resources\Steak.png" />
+    <BundleResource Include="Resources\Spanish.png" />
+    <BundleResource Include="Resources\Singaporean.png" />
+    <BundleResource Include="Resources\Seafood.png" />
+    <BundleResource Include="Resources\Roulette.png" />
+    <BundleResource Include="Resources\Pizza.png" />
+    <BundleResource Include="Resources\Mexican.png" />
+    <BundleResource Include="Resources\Malaysian.png" />
+    <BundleResource Include="Resources\Korean.png" />
+    <BundleResource Include="Resources\Japanese.png" />
+    <BundleResource Include="Resources\Italian.png" />
+    <BundleResource Include="Resources\Indian.png" />
+    <BundleResource Include="Resources\Hamburger.png" />
+    <BundleResource Include="Resources\Greek.png" />
+    <BundleResource Include="Resources\German.png" />
+    <BundleResource Include="Resources\French.png" />
+    <BundleResource Include="Resources\FishChips.png" />
+    <BundleResource Include="Resources\Chinese.png" />
+  </ItemGroup>
 </Project>

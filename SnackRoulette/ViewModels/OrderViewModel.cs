@@ -107,6 +107,7 @@ namespace SnackRoulette.ViewModels
             }
             string cuisineC;
             if (Cuisine == "I don't choose") { cuisineC = ""; }
+            else if (Cuisine == "Fish&Chips") { cuisineC = "fish and chips"; }
             else { cuisineC = Cuisine; }
             return new OrderModel(cuisineC, Radius, budget, NumGuests, coordinateLat, coordinateLong);
         }

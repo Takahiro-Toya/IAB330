@@ -30,6 +30,16 @@ namespace SnackRoulette.ViewModels {
                     PhoneNr = value.Phone;
                     Address = value.Address;
                     Price = getPriceType(Order.Budget);
+                    if (Order.Cuisine == "I don't choose")
+                    {
+                        FoodImage = "Roulette";
+                    } else if (Order.Cuisine == "Fish&Chips")
+                    {
+                        FoodImage = "FishChips";
+                    } else
+                    {
+                        FoodImage = String.Format("{0}", Order.Cuisine);
+                    }
                 } else
                 {
                     ResName = "Restaurant Not Found";
@@ -37,6 +47,7 @@ namespace SnackRoulette.ViewModels {
                     PhoneNr = "";
                     Address = "";
                     Price = "";
+                    FoodImage = "Roulette";
                 }
             }
         }
@@ -67,7 +78,7 @@ namespace SnackRoulette.ViewModels {
 
         public OrderModel Order = null; // set before start searching restaurant
 
-        private string resName = "restaurantName";
+        private string resName = "";
         public string ResName
         {
             get { return resName; }
@@ -78,7 +89,7 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
-        private string description = "description";
+        private string description = "";
         public string Description
         {
             get { return description; }
@@ -89,7 +100,7 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
-        private string address = "address";
+        private string address = "";
         public string Address
         {
             get { return address; }
@@ -100,7 +111,7 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
-        private string phoneNr = "phoneNumber";
+        private string phoneNr = "";
         public string PhoneNr
         {
             get { return phoneNr; }
@@ -111,7 +122,7 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
-        private string price = "inexpensive";
+        private string price = "";
         public string Price
         {
             get { return price; }
@@ -130,6 +141,15 @@ namespace SnackRoulette.ViewModels {
             {
                 coordinate = Convert.ToString(value);
                 OnPropertyChanged("Coordinate");
+            }
+        }
+
+        private string foodImage = "Roulette";
+        public string FoodImage
+        {
+            get { return foodImage; }
+            set { foodImage = value;
+                OnPropertyChanged("FoodImage");
             }
         }
 

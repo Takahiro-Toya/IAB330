@@ -7,9 +7,11 @@ namespace SnackRoulette.Models {
 
         private Random random = new Random();
 
-        /*
-         * Get list of places from google place api
-         */
+         /// <summary>
+         /// Gets list of places from google place api
+         /// </summary>
+         /// <param name="order"></param>
+         /// <returns></returns>
         private async Task<List<Place>> getPlacesForOrder(OrderModel order)
         {
             PlaceApi api = new PlaceApi();
@@ -19,23 +21,11 @@ namespace SnackRoulette.Models {
         }
 
 
-        /*
-         * Get random place from the places got through getPlacesForOrder(:)
-         */
-        public async Task<Place> getRandomPlace(OrderModel order)
-        {
-            List<Place> places = await getPlacesForOrder(order);
-            if (places.Count != 0)
-            {
-                int randomNum = random.Next(0, places.Count - 1);
-                return places[randomNum];
-            } else
-            {
-                return null;
-            }
-            
-        }
-
+        /// <summary>
+        /// Return place 'Detail' rather than 'Place'
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task<Detail> getRandomPlaceDetail(OrderModel order)
         {
             List<Place> places = await getPlacesForOrder(order);
