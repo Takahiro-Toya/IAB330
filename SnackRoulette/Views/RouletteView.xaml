@@ -12,22 +12,22 @@
             <!-- Main layout -->
             <StackLayout>
                 <Label Text=""/>
-                <Label Text="Spin The Wheel to Choose Your Food" HorizontalTextAlignment="Center" Margin="10"/>
+                <Label Text="Spin The Wheel to Choose Your Food" HorizontalTextAlignment="Center" Margin="5"/>
                 <Label Text=" "/>
                 <Label x:Name="restaurantNameLabel" Text="{Binding ResName}" FontSize="Title" HorizontalTextAlignment="Center" TextColor="#F95F62"/>
-                <Label Text="Category" Margin="8" />
-                <Label x:Name="description" Text="{Binding Description}" HorizontalTextAlignment="Center" FontSize="Large"/>
-                <Label Text="Price level" Margin="8" />
-                <Label x:Name="priceLabel" Text="{Binding Price}" HorizontalTextAlignment="Center" FontSize="Large"/>
-                <Label Text="Phone number" Margin="8" />
-                <Label x:Name="phoneNrLabel" Text="{Binding PhoneNr}" HorizontalTextAlignment="Center" FontSize="Large"/>
-                <Label Text="Address" Margin="8" />
-                <Label x:Name="addressLabel" Text="{Binding Address}" HorizontalTextAlignment="Center" FontSize="Large"/>
-            <Label Text="Coords" Margin="8" />
-            <Label x:Name="coordsLabel" Text="{Binding Coordinate}" HorizontalTextAlignment="Center" FontSize="Large"/>
+                <Label Text="Category" Margin="5" />
+                <Label x:Name="description" Text="{Binding Description}" HorizontalTextAlignment="Center" FontSize="Medium"/>
+                <Label Text="Price level" Margin="5" />
+                <Label x:Name="priceLabel" Text="{Binding Price}" HorizontalTextAlignment="Center" FontSize="Medium"/>
+                <Label Text="Phone number" Margin="5" />
+                <Label x:Name="phoneNrLabel" Text="{Binding PhoneNr}" HorizontalTextAlignment="Center" FontSize="Medium"/>
+                <Label Text="Address" Margin="5" />
+                <Label x:Name="addressLabel" Text="{Binding Address}" HorizontalTextAlignment="Center" FontSize="Medium"/>
+                <Label Text="Coords" Margin="5" />
+                <Label x:Name="coordsLabel" Text="{Binding Coordinate}" HorizontalTextAlignment="Center" FontSize="Medium"/>
 
             <Button Text= "START!" TextColor="White" BackgroundColor="#F95F62"
-                        Margin="50" CornerRadius="20"
+                        Margin="30" CornerRadius="20"
                         Command="{Binding StartRouletteCommand}"/>          
                 <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center"/>
 
