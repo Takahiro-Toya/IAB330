@@ -122,6 +122,17 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
+        public string coordinate = "Coordinate";
+        public string Coordinate
+        {
+            get { return coordinate; }
+            set
+            {
+                coordinate = Convert.ToString(value);
+                OnPropertyChanged("Coordinate");
+            }
+        }
+
         /*
          * Start searching restaurants with given order requirement
          */

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using SnackRoulette.Models;
 using SnackRoulette.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SnackRoulette.Views
@@ -144,6 +147,51 @@ namespace SnackRoulette.Views
             int value = (int)args.NewValue;
             (BindingContext as OrderViewModel).NumGuests = value;
         }
+        async void Location_Changed(object sender, System.EventArgs e)
+        {
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (status != PermissionStatus.Granted)
+                {
+                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+                    {
+                        await DisplayAlert("Location Required", "This app must use your location to find nearby restaurants", "OK");
+                    }
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+                    var value = await Geolocation.GetLastKnownLocationAsync();
+
+                    if (value != null)
+                    {
+                        double loc1 = value.Latitude;
+                        double loc2 = value.Longitude;
+                        (BindingContext as OrderViewModel).CoordinateLat = (value.Latitude);
+                        (BindingContext as OrderViewModel).CoordinateLong = (value.Longitude);
+                    };
+                }
+                if (status == PermissionStatus.Granted)
+                {
+                    var value = await Geolocation.GetLastKnownLocationAsync();
+
+                    if (value != null)
+                    {
+                        double loc1 = value.Latitude;
+                        double loc2 = value.Longitude;
+                        (BindingContext as OrderViewModel).CoordinateLat = (value.Latitude);
+                        (BindingContext as OrderViewModel).CoordinateLong = (value.Longitude);
+                    }
+                }
+                else if (status != PermissionStatus.Unknown)
+                {
+                    await DisplayAlert("Location Denied", "Cannot continue without Location enabled", "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.ToString(), "Ok");
+            }
+        }
+
 
     }
 }

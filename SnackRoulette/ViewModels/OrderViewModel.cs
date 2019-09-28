@@ -43,8 +43,31 @@ namespace SnackRoulette.ViewModels
             }
         }
 
+        public double coordinateLat = 0;
+        public double CoordinateLat
+        {
+            get { return coordinateLat; }
+            set
+            {
+                coordinateLat = value;
+                OnPropertyChanged("Coordinate");
+            }
+        }
+
+        public double coordinateLong = 0;
+        public double CoordinateLong
+        {
+            get { return coordinateLong; }
+            set
+            {
+                coordinateLong = value;
+                OnPropertyChanged("Coordinate");
+            }
+        }
+
         public int NumGuests { get; set; } = 1;
 
+       
 
         public string userEmail { get; set; }
 
@@ -85,7 +108,7 @@ namespace SnackRoulette.ViewModels
             string cuisineC;
             if (Cuisine == "I don't choose") { cuisineC = ""; }
             else { cuisineC = Cuisine; }
-            return new OrderModel(cuisineC, Radius, budget, NumGuests);
+            return new OrderModel(cuisineC, Radius, budget, NumGuests, coordinateLat, coordinateLong);
         }
 
     }

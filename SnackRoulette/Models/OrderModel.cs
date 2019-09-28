@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Essentials;
 
 namespace SnackRoulette.Models {
 
@@ -12,13 +13,17 @@ namespace SnackRoulette.Models {
         public double Raduis = 2.0; // radius requirement
         public int Budget = 1; // 1 ~ 4 ( inexpensive ~ expensive)
         public int NumGuests = 1; // number of meals
+        public double CoordinateLat =0;
+        public double CoordinateLong =0;
 
-        public OrderModel(string cuisine, double radius, int budget, int numGuests)
+        public OrderModel(string cuisine, double radius, int budget, int numGuests, double coordinateLat, double coordinateLong)
         {
             this.Cuisine = cuisine;
             this.Budget = budget;
             this.Raduis = radius;
             this.NumGuests = numGuests;
+            this.CoordinateLat = coordinateLat;
+            this.CoordinateLong = coordinateLong;
         }
     }
 }

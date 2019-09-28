@@ -54,8 +54,8 @@
                     <Label Text="{Binding Path=Radius, StringFormat='{0:F1} km'}"
                             Grid.Row="0" Grid.Column="2" VerticalOptions="Center"/>
                     <Button Grid.Row="1" Grid.Column="1" BorderWidth="1" HorizontalOptions="Center" WidthRequest="180"
-                            Text= "Show Map" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
-                            Command="{Binding MapViewCommand}"/>  
+                            Text= "GetLocation" TextColor="#F95F62" BackgroundColor="White" BorderColor="#F95F62"
+                            Clicked ="Location_Changed"/>  
                 </Grid>
         
                 <BoxView BackgroundColor="Silver" HeightRequest="1" />
