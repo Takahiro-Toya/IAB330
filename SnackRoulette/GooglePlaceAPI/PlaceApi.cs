@@ -17,6 +17,18 @@ namespace SnackRoulette.Models {
             Client.BaseAddress = new Uri("https://maps.googleapis.com/maps/api/place/");
         }
 
+        /// <summary>
+        /// Gets stores of a certain category near the specified co-ordinates. Can be show only
+        /// open stores or all stores.
+        /// </summary>
+        /// <param name="latitude">latitude of user</param>
+        /// <param name="longitude">longitude of user</param>
+        /// <param name="radius">radius within to search restaurant </param>
+        /// <param name="type">type of shop/store</param>
+        /// <param name="keyword">some keyword(s) to specify type of store</param>
+        /// <param name="priceLevel">price level</param>
+        /// <param name="onlyOpen">true if the search should return only open restaurant</param>
+        /// <returns></returns>
         async public Task<Response> GetPlaces(double latitude, double longitude, double radius, String type, String keyword, int priceLevel, bool onlyOpen)
         {
             string url = null;
@@ -54,35 +66,35 @@ namespace SnackRoulette.Models {
         /// <param name="longitude">Longitude of user.</param>
         /// <param name="category">Category of stores to find.</param>
         /// <param name="open">Should find only open stores.</param>
-        async public Task<Response> GetPlaces(double latitude, double longitude, String category, bool onlyOpen)
-        {
-            string url = null;
-            if (onlyOpen)
-            {
-                url = String.Format("nearbysearch/json?location={0},{1}&radius=1500&type={2}&key={3}&opennow", latitude, longitude, category, apiKey);
-            }
-            else
-            {
-                url = String.Format("nearbysearch/json?location={0},{1}&radius=1500&type={2}&key={3}", latitude, longitude, category, apiKey)  ;
+        //async public Task<Response> GetPlaces(double latitude, double longitude, String category, bool onlyOpen)
+        //{
+        //    string url = null;
+        //    if (onlyOpen)
+        //    {
+        //        url = String.Format("nearbysearch/json?location={0},{1}&radius=1500&type={2}&key={3}&opennow", latitude, longitude, category, apiKey);
+        //    }
+        //    else
+        //    {
+        //        url = String.Format("nearbysearch/json?location={0},{1}&radius=1500&type={2}&key={3}", latitude, longitude, category, apiKey)  ;
                                     
-            }
-            try
-            {
-                var resp = await Client.GetAsync(url).ConfigureAwait(false);
-                if (resp.IsSuccessStatusCode)
-                {
-                    return JsonConvert.DeserializeObject(await resp.Content.ReadAsStringAsync(), typeof(Response)) as Response;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
+        //    }
+        //    try
+        //    {
+        //        var resp = await Client.GetAsync(url).ConfigureAwait(false);
+        //        if (resp.IsSuccessStatusCode)
+        //        {
+        //            return JsonConvert.DeserializeObject(await resp.Content.ReadAsStringAsync(), typeof(Response)) as Response;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //}
 
         /// <summary>
         /// Get full details of specified place ID.

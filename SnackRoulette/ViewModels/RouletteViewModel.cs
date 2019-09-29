@@ -30,10 +30,11 @@ namespace SnackRoulette.ViewModels {
                     PhoneNr = value.Phone;
                     Address = value.Address;
                     Price = getPriceType(Order.Budget);
-                    if (Order.Cuisine == "I don't choose")
+                    Coordinate = value.Geo.Location.Latitude.ToString() + "  " + value.Geo.Location.Longitude.ToString();
+                    if (Order.Cuisine == "")
                     {
                         FoodImage = "Roulette";
-                    } else if (Order.Cuisine == "Fish&Chips")
+                    } else if (Order.Cuisine == "fish and chips")
                     {
                         FoodImage = "FishChips";
                     } else
@@ -133,7 +134,7 @@ namespace SnackRoulette.ViewModels {
             }
         }
 
-        public string coordinate = "Coordinate";
+        public string coordinate = "";
         public string Coordinate
         {
             get { return coordinate; }

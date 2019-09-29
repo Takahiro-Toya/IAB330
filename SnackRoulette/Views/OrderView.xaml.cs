@@ -40,14 +40,15 @@ namespace SnackRoulette.Views
             budgetDefaultBtn.TextColor = Color.White;
             Prev_Selected_Button = budgetDefaultBtn;
             radius_slider.Value = 2; // default radius value (2km)
-            setupCuisineView(); 
+            setupCuisineView();
         }
 
-        /*
-         * Layouts the cuisine button on the cuisine selectin view
-         * It's better to handle this here rather than .xaml as we may change types of cuisines or
-         * layout (number of columns or rows)in the future
-         */
+
+         /// <summary>
+         /// Layouts the cuisine button on the cuisine selectin view
+         /// It's better to handle this here rather than .xaml as we may change types of cuisines or
+         /// layout(number of columns or rows)in the future
+         /// </summary>
         private void setupCuisineView()
         {
             int i = 0;
@@ -79,11 +80,13 @@ namespace SnackRoulette.Views
             }
         }
 
-        /* 
-         * Called when cuisine button is clicked
-         * Tells OrderViewModel about this change, and
-         * change background color of new clicked button and previously clicked button
-         */
+         /// <summary>
+         /// Called when cuisine button is clicked
+         /// Tells OrderViewModel about this change, and
+         /// change background color of new clicked button and previously clicked button
+         /// </summary>
+         /// <param name="sender"></param>
+         /// <param name="e"></param>
         void Cuisine_Changed(object sender, EventArgs e)
         {
             Button newBtn = sender as Button;
@@ -95,11 +98,13 @@ namespace SnackRoulette.Views
             (BindingContext as OrderViewModel).Cuisine = newBtn.Text;
         }
 
-        /*
-         * Called when budget button is clicked
-         * Tells OrderViewModel about this change, and
-         * changes background color of the new clicked button and previously clicked button
-         */
+         /// <summary>
+         /// Called when budget button is clicked
+         /// Tells OrderViewModel about this change, and
+         /// changes background color of the new clicked button and previously clicked button
+         /// </summary>
+         /// <param name="sender"></param>
+         /// <param name="e"></param>
         void BudgetType_Changed(object sender, System.EventArgs e)
         {
             Button newBtn = sender as Button;
@@ -111,9 +116,11 @@ namespace SnackRoulette.Views
             (BindingContext as OrderViewModel).BudgetType = newBtn.Text;
         }
 
-        /*
-         * The view to pick preferred cuisine will apper from bottom edge
-         */
+        /// <summary>
+        /// The view to pick preferred cuisine will apper from bottom edge
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async void PreferredCuisineView(object sender, EventArgs e)
         {
             if (preferredCuisineView.IsVisible)
@@ -129,24 +136,29 @@ namespace SnackRoulette.Views
             }
         }
 
-
-        /*
-         * Called when radius' slider value is changed, and tells to OrderViewModel
-         */
+        /// <summary>
+        /// Called when radius' slider value is changed, and tells to OrderViewModel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
         {
             double value = args.NewValue;
             (BindingContext as OrderViewModel).Radius = value;
         }
 
-        /*
-         * Called when number of guests picker value is changed, and tells to OrderViewModel
-         */
+        /// <summary>
+        /// Called when number of guests picker value is changed, and tells to OrderViewModel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         void onPickerValueChanged(object sender, ValueChangedEventArgs args)
         {
             int value = (int)args.NewValue;
             (BindingContext as OrderViewModel).NumGuests = value;
         }
+
+
         async void Location_Changed(object sender, System.EventArgs e)
         {
             try

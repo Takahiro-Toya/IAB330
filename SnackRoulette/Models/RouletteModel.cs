@@ -15,7 +15,7 @@ namespace SnackRoulette.Models {
         private async Task<List<Place>> getPlacesForOrder(OrderModel order)
         {
             PlaceApi api = new PlaceApi();
-            Response response = api.GetPlaces(order.CoordinateLat, order.CoordinateLong, order.Raduis * 1000, "restaurant", order.Cuisine, order.Budget, true).Result;
+            Response response = api.GetPlaces(order.CoordinateLat, order.CoordinateLong, order.Raduis * 1000, "restaurant", order.Cuisine, order.Budget, false).Result;
             List<Place> places = response.Places;
             return places;
         }
