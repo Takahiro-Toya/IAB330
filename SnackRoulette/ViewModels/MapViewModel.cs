@@ -1,71 +1,45 @@
 ﻿using System;
+using SnackRoulette.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
+using SnackRoulette.ViewModels;
 
 namespace SnackRoulette
 {
-    public class MapView : ContentPage
+    public class MapViewModel : BaseViewModel
     {
         Map map;
-        public MapView()
+        public MapViewModel()
         {
             map = new Map
             {
-                //IsShowingUser = true, //Dont Activate this until GPS works (It will just crash)
+                IsShowingUser = true, //Dont Activate this until GPS works (It will just crash)
                 HeightRequest = 100,
                 WidthRequest = 960,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
 
             //Starting region of the map, figure out how to set that to GPS
-            //map.MoveToRegion(new MapSpan(new Position(0, 0), 360, 360));
+            //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Order.CoordinateLat, order.CoordinateLong), Distance.FromKilometers(6)));
 
-            // add the slider for adjusting search radius
-            var slider = new Slider(1, 18, 1);
-            slider.ValueChanged += (sender, e) => {
-
-            };
-
-
-            // create map style buttons
-            var street = new Button { Text = "Street" };
-            var hybrid = new Button { Text = "Hybrid" };
-            street.Clicked += HandleClicked;
-            hybrid.Clicked += HandleClicked;
-            var segments = new StackLayout
+            /*
+             * This area isn't importing the Order object properly from RouletteViewModel, I know I've implemented it incorrectly, I just don't know how
+             *
+             */
+            /*map.Pins.Clear();
+            var position = new Position(Order.CoordinateLat, Order.CoordinateLong); // Latitude, Longitude
+            var pin = new Pin
             {
-                
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Orientation = StackOrientation.Horizontal,
-                Spacing = 50,
-                Children = { street, hybrid }
+                Type = PinType.Place,
+                Position = position,
+                Label = Order.Cuisine,
             };
+            map.Pins.Add(pin);*/
 
 
-            // constructing all above functions (Need to convert this into XML, I was lazy)
-            var stack = new StackLayout { Spacing = 0 };
-            stack.Children.Add(map);
-            stack.Children.Add(slider);
-            stack.Children.Add(segments);
-            Content = stack;
 
 
- 
-        }
-
-        void HandleClicked(object sender, EventArgs e)
-        {
-            var b = sender as Button;
-            switch (b.Text)
-            {
-                case "Street":
-                    map.MapType = MapType.Street;
-                    break;
-                case "Hybrid":
-                    map.MapType = MapType.Hybrid;
-                    break;
-            }
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using SnackRoulette.Models;
 using SnackRoulette.ViewModels;
-
 using Xamarin.Forms;
 
 namespace SnackRoulette.Views
@@ -13,7 +11,6 @@ namespace SnackRoulette.Views
         {
             InitializeComponent();
             (BindingContext as RouletteViewModel).Order = order;
-
         }
     }
 }
