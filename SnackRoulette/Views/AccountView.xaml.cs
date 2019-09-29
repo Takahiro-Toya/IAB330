@@ -15,10 +15,7 @@ namespace SnackRoulette.Views
         public AccountView(string email, AccountViewModel facebookUserData)
         {
             InitializeComponent();
-            //var Data = userdatabase.GetAllUsers();
-            //user.ItemsSource = Data;
             BindingContext = facebookUserData;
-            var data2 = userdatabase.GetUser(email);
             oneuser.Text = email;
         }
     }
